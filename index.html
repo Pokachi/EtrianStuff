@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Etrian Odyssey Skill Simulator</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/js/skillTree.js"></script>
+    </head>
+    <body>
+        <script>
+            //Only EO1 for now. May add more as I start playing other games
+            var folderName = "/EO1";
+        </script>
+        <div ng-app="skillTree" ng-controller="skillTreeController">
+            <div id="header">
+                <select ng-model="class.selected" ng-options="class for class in class.classes"></select>
+                <select ng-model="level.selected" ng-options="level for level in level.levels" ng-change="updateSP()"></select>
+                <select ng-model="retirement.selected" ng-options="retirement for retirement in retirement.retirements" ng-change="updateSP()"></select>
+            </div>
+            <!-- testing stuff for now -->
+            <div id="selected-stuff">
+                <p>selected Class is {{class.selected}}</p>
+                <p>SP: {{usedSkillPoints}} / {{totalSkillPoints}}</p>
+            </div>
+        </div>
+    </body>
+</html>

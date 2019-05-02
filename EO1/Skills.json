@@ -1,0 +1,72 @@
+{
+    "Landsknecht": [
+        {
+            "id": "LHp",
+            "Name": "HP Up",
+            "Description": "Increase maximum HP",
+            "Stat": [],
+            "Body": [],
+            "PreReq": [],
+            "MaxLevel": 10,
+            "Location": { "x":0, "y": 0},
+            "BoostAllowed": false,
+            "Level Data": {
+                "1": [{"HP Increase": "110%"}],
+                "2": [{"HP Increase": "111%"}],
+                "3": [{"HP Increase": "112%"}],
+                "4": [{"HP Increase": "113%"}],
+                "5": [{"HP Increase": "119%"}],
+                "6": [{"HP Increase": "120%"}],
+                "7": [{"HP Increase": "121%"}],
+                "8": [{"HP Increase": "122%"}],
+                "9": [{"HP Increase": "123%"}],
+                "10": [{"HP Increase": "130%"}]
+            }
+        },
+        {
+            "id": "LTp",
+            "Name": "TP Up",
+            "Description": "Increase maximum TP",
+            "Stat": [],
+            "Body": [],
+            "PreReq": [],
+            "MaxLevel": 10,
+            "Location": { "x":1, "y": 0},
+            "BoostAllowed": false,
+            "Level Data": {
+                "1": [{"TP Increase": "110%"}],
+                "2": [{"TP Increase": "112%"}],
+                "3": [{"TP Increase": "114%"}],
+                "4": [{"TP Increase": "116%"}],
+                "5": [{"TP Increase": "128%"}],
+                "6": [{"TP Increase": "130%"}],
+                "7": [{"TP Increase": "132%"}],
+                "8": [{"TP Increase": "134%"}],
+                "9": [{"TP Increase": "136%"}],
+                "10": [{"TP Increase": "150%"}]
+            }
+        }
+    ],
+    "Survivalist": [
+        "TP Up",
+        "ATK Up",
+        "DEF Up",
+        "Axes",
+        "Swords",
+        "2-Hit",
+        "Mine",
+        "War Cry",
+        "Hell Cry",
+        "Arm Heal",
+        "Crush",
+        "Stunner",
+        "Silencer",
+        "Cleaver",
+        "Tornado",
+        "Allslash",
+        "Blazer",
+        "Shocker",
+        "Freezer",
+        "Flee"
+    ]
+}
