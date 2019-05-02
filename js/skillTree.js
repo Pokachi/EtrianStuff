@@ -5,7 +5,7 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
     $http.get($window.folderName + '/Meta.json')
     .then(function(meta){
         $scope.initalSP = meta.data.initialSP;
-        $scope.totalSkillPoints = meta.data.initialSP;
+        $scope.totalSkillPoints = meta.data.initialSP + 1;
         $scope.usedSkillPoints = 0;
         $scope.retirementData = meta.data.retirementData;
         $scope.initialClass = meta.data.initialClass;
