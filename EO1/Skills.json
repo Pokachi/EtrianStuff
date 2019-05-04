@@ -16,7 +16,7 @@
         "Type": "Stat Increase",
         "Downstream": {"Blazer": 3, "Freezer": 3, "Shocker": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":0, "y": 1},
         "BoostAllowed": false,
         "LevelData": {
             "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
@@ -28,7 +28,7 @@
         "Type": "Stat Increase",
         "Downstream": {"WarCry": 3, "HellCry": 10},
         "MaxLevel": 10,
-        "Location": { "x":2, "y": 0},
+        "Location": { "x":0, "y": 2},
         "BoostAllowed": false,
         "LevelData": {
             "STR Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -40,7 +40,7 @@
         "Type": "Stat Increase",
         "Downstream": {"ArmHeal": 1, "Flee": 5},
         "MaxLevel": 10,
-        "Location": { "x":3, "y": 0},
+        "Location": { "x":0, "y": 4},
         "BoostAllowed": false,
         "LevelData": {
             "Phys Damage Recieved": ["95%", "94%", "93%", "92%", "91%", "90%", "89%", "88%", "87%", "85%"]
@@ -52,7 +52,7 @@
         "Type": "Stat Increase",
         "Downstream": {"Crush": 1, "Silencer": 7, "Stunner": 3, "2Hit": 5},
         "MaxLevel": 10,
-        "Location": { "x":0, "y": 1},
+        "Location": { "x":3, "y": 3},
         "BoostAllowed": false,
         "LevelData": {
             "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -64,7 +64,7 @@
         "Type": "Stat Increase",
         "Downstream": {"Blazer": 7, "Freezer": 7, "Shocker": 7, "Tornado": 5, "Cleaver": 1, "Allslash": 5, "2Hit": 5},
         "MaxLevel": 10,
-        "Location": { "x":0, "y": 2},
+        "Location": { "x":3, "y": 1},
         "BoostAllowed": false,
         "LevelData": {
             "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -77,7 +77,7 @@
         "Upstream": {"Axes": 5, "Swords": 5},
         "Downstream": {"Allslash": 3},
         "MaxLevel": 10,
-        "Location": { "x":3, "y": 0},
+        "Location": { "x":3, "y": 2},
         "BoostAllowed": false,
         "LevelData": {
             "Chance": ["10%", "11%", "12%", "13%", "16%", "17%", "18%", "19%", "20%", "23%"]
@@ -90,7 +90,7 @@
         "Body": "Head",
         "Upstream": {"AtkUpP": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":1, "y": 2},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["2", "2", "2", "2", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3"],
@@ -106,7 +106,7 @@
         "Body": "Head",
         "Upstream": {"AtkUpP": 10},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":1, "y": 3},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["2", "2", "2", "2", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3"],
@@ -123,7 +123,7 @@
         "Body": "Head",
         "Upstream": {"DefUp": 1},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":1, "y": 4},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["2", "2", "2", "2", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"],
@@ -139,7 +139,7 @@
         "Body": "Leg",
         "Upstream": {"DefUp": 5},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":1, "y": 5},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["4", "4", "4", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
@@ -154,7 +154,7 @@
         "Body": "Arm",
         "Upstream": {"Swords": 1},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":4, "y": 0},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"],
@@ -171,7 +171,7 @@
         "Body": "Arm",
         "Upstream": {"Swords": 5},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":4, "y": 1},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"],
@@ -188,7 +188,7 @@
         "Body": "Leg",
         "Upstream": {"2Hit": 3, "Swords": 5},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":4, "y": 2},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"],
@@ -210,7 +210,7 @@
         "Body": "Leg",
         "Upstream": {"Swords": 7, "TpUp1": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":2, "y": 0},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["8", "8", "9", "9", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
@@ -227,7 +227,7 @@
         "Body": "Leg",
         "Upstream": {"Swords": 7, "TpUp1": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":2, "y": 1},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["8", "8", "9", "9", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
@@ -244,7 +244,7 @@
         "Body": "Leg",
         "Upstream": {"Swords": 7, "TpUp1": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":2, "y": 2},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["8", "8", "9", "9", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
@@ -259,7 +259,7 @@
         "Body": "Arm",
         "Upstream": {"Axes": 1},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":4, "y": 3},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"],
@@ -275,7 +275,7 @@
         "Body": "Arm",
         "Upstream": {"Axes": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":4, "y": 4},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
@@ -291,7 +291,7 @@
         "Body": "Arm",
         "Upstream": {"Axes": 7},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":4, "y": 5},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
@@ -307,7 +307,7 @@
         "Note": "There is a chance to get nothing from a gathering point. Leveling the skill increases the chance to get item. For example if an gathering spot has 80% to get an item, at level it will have 80*1.02 = 81.6% chance to get an item.",
         "Type": "Search Skill",
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":0, "y": 5},
         "BoostAllowed": false,
         "LevelData": {
             "Item Chance": ["100%", "102%", "104%", "106%", "110%", "111%", "112%", "113%", "114%", "120%"],

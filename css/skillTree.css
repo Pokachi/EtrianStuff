@@ -1,10 +1,65 @@
-.skill-icon { 
-    width: 100px;
-    height: 50px;
-    border: solid black 4px;
-    }
+div.skill-icon {
+    color: navy;
+	margin:0;
+	padding:4px;
+	border: 2px solid navy;
+	border-radius: .4rem;
+	line-height: .9rem;
+	width: 100px;
+	height: 40px;
+    margin: 4px 2px;
+	background: #a4b4f9;
+    position: absolute;
+}
+
+div.dummy {
+    color: #9999cc;
+	margin:0;
+	padding:4px;
+	border: 2px solid #9999cc;
+	border-radius: .4rem;
+	line-height: .9rem;
+	width: 100px;
+	height: 40px;
+    margin: 4px 2px;
+	background: #dae0fd;
+    position: absolute;
+}
+
+div.skill-allocation {
+    float: right;
+}
+
+.button {
+    background-color: #a4b4f9;
+    width: 2rem;
+    height: 1.3rem;
+    color: navy;
+    text-align: center;
+    text-decoration: none;
+    float: right;
+    font-size: 16px;
+	border-radius: .4rem;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
 
 .disabled {
     pointer-events: none;
     opacity: 0.4;
+}
+
+.line {
+    position: absolute;
+    z-index: -1;
+}
+
+.requirement {
+    z-index: 2;
+    color: navy;
+}
+
+.horz {
+    width: 90px;
+    height: 4px;
 }
