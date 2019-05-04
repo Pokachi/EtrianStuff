@@ -1,4 +1,4 @@
-div.skill-icon {
+.skill-icon {
     color: navy;
 	margin:0;
 	padding:4px;
@@ -12,22 +12,26 @@ div.skill-icon {
     position: absolute;
 }
 
-div.dummy {
-    color: #9999cc;
+.disabled {
+    color: navy;
 	margin:0;
 	padding:4px;
-	border: 2px solid #9999cc;
+	border: 2px solid #b3b7e4;
 	border-radius: .4rem;
 	line-height: .9rem;
 	width: 100px;
 	height: 40px;
     margin: 4px 2px;
-	background: #dae0fd;
+	background: #d4dafc;
     position: absolute;
 }
 
-div.skill-allocation {
+.skill-allocation {
     float: right;
+}
+
+.overspend {
+    background: red;
 }
 
 .button {
@@ -44,9 +48,9 @@ div.skill-allocation {
     cursor: pointer;
   }
 
-.disabled {
-    pointer-events: none;
+.disabledBtn {
     opacity: 0.4;
+    pointer-events: none;
 }
 
 .line {
@@ -57,9 +61,4 @@ div.skill-allocation {
 .requirement {
     z-index: 2;
     color: navy;
-}
-
-.horz {
-    width: 90px;
-    height: 4px;
 }

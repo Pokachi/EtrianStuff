@@ -70,15 +70,15 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
     };
 
     //Increase point in a skill
-    $scope.increasePoint = function(skill) {
+    $scope.increasePoint = function(skill, points) {
         for (upstream in $scope.skills[skill].Upstream) {
             if ($scope.skillAllocation[upstream] < $scope.skills[skill].Upstream[upstream]){
-                return;
+                $scope.increasePoint(upstream, $scope.skills[skill].Upstream[upstream] - $scope.skillAllocation[upstream]);
             }
         }
-        if($scope.skillPoints.usedSkillPoints < $scope.skillPoints.totalSkillPoints && $scope.skillAllocation[skill] < $scope.skills[skill].MaxLevel) {
-            $scope.skillAllocation[skill]++;
-            $scope.skillPoints.usedSkillPoints++;
+        if($scope.skillAllocation[skill] < $scope.skills[skill].MaxLevel) {
+            $scope.skillAllocation[skill] += points;
+            $scope.skillPoints.usedSkillPoints += points;
         }
     }
 
@@ -134,8 +134,8 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
                     dummyBlock = '<div class="dummy" style="left:' + 180 * parseInt($scope.skills[$attrs.skill].Location.x) + 'px; top:' + (100 + 80 * parseInt($scope.skills[$attrs.skill].Location.y)) + 'px; " ng-class="{disabled: shouldDisable(\'' + $attrs.skill + '\')}"/>';
                     //Create buttons
                     buttonDiv = angular.element("<div/>");
-                    increaseButton = $compile('<button ng-click="increasePoint(\'' + $attrs.skill + '\')" class="increase button" ng-class="{disabled: skillAllocation[\'' + $attrs.skill + '\'] >= skills[\'' + $attrs.skill + '\'].MaxLevel}"> + </button>')($scope);
-                    minusButton = $compile('<button ng-click="decreasePoint(\'' + $attrs.skill + '\', 1)" class="minus button" ng-class="{disabled: skillAllocation[\'' + $attrs.skill + '\'] == 0}"> - </button>')($scope);
+                    increaseButton = $compile('<button ng-click="increasePoint(\'' + $attrs.skill + '\', 1)" class="increase button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] >= skills[\'' + $attrs.skill + '\'].MaxLevel}"> + </button>')($scope);
+                    minusButton = $compile('<button ng-click="decreasePoint(\'' + $attrs.skill + '\', 1)" class="minus button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] == 0}"> - </button>')($scope);
                     $element.append(dummyBlock).append(skillBlock.append(buttonDiv.append(increaseButton).append(minusButton)));
 
                     //draw lines

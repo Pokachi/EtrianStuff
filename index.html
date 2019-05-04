@@ -19,7 +19,7 @@
             </div>
             <!-- testing stuff for now -->
             <div id="selected-stuff">
-                <p>SP: {{skillPoints.usedSkillPoints}} / {{skillPoints.totalSkillPoints}}</p>
+                <p ng-class="{overspend: skillPoints.usedSkillPoints > skillPoints.totalSkillPoints}">SP: {{skillPoints.usedSkillPoints}} / {{skillPoints.totalSkillPoints}}</p>
             </div>
             <div id="primary">
                 <div class="icons" ng-repeat="s in class.classData[class.selected].skills">
