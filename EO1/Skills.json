@@ -52,7 +52,7 @@
         "Type": "Stat Increase",
         "Downstream": {"Crush": 1, "Silencer": 7, "Stunner": 3, "2Hit": 5},
         "MaxLevel": 10,
-        "Location": { "x":3, "y": 3},
+        "Location": { "x":3, "y": 5},
         "BoostAllowed": false,
         "LevelData": {
             "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -77,7 +77,7 @@
         "Upstream": {"Axes": 5, "Swords": 5},
         "Downstream": {"Allslash": 3},
         "MaxLevel": 10,
-        "Location": { "x":3, "y": 2},
+        "Location": { "x":3, "y": 3},
         "BoostAllowed": false,
         "LevelData": {
             "Chance": ["10%", "11%", "12%", "13%", "16%", "17%", "18%", "19%", "20%", "23%"]
@@ -259,7 +259,7 @@
         "Body": "Arm",
         "Upstream": {"Axes": 1},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 3},
+        "Location": { "x":4, "y": 4},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"],
@@ -275,7 +275,7 @@
         "Body": "Arm",
         "Upstream": {"Axes": 3},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 4},
+        "Location": { "x":4, "y": 5},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
@@ -291,7 +291,7 @@
         "Body": "Arm",
         "Upstream": {"Axes": 7},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 5},
+        "Location": { "x":4, "y": 6},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],

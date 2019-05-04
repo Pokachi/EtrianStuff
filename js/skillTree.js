@@ -109,15 +109,37 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
     //Draw line and level requirement
     $scope.drawLine = function(skill, element) {
         for (upstream in $scope.skills[skill].Upstream) {
-            template = '<svg class="line" width="1000" height="600"><line stroke="navy" stroke-width="2.5" x1="' + (180 * parseInt($scope.skills[upstream].Location.x) + 50)
-             + '" y1="' + (50 + 80 * parseInt($scope.skills[upstream].Location.y)) + '" x2="' + (180 * parseInt($scope.skills[skill].Location.x) + 50) + '" y2="' + (50 + 80 * parseInt($scope.skills[skill].Location.y))
+            template = '<svg class="line" width="1000" height="600"><marker id="mid" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="navy" /></marker>'
+             + '<polyline id="' + upstream + '-' + skill + '" marker-mid="url(#mid)" stroke="navy" stroke-width="2.5" points="' + (180 * parseInt($scope.skills[upstream].Location.x) + 50)
+             + ',' + (50 + 80 * parseInt($scope.skills[upstream].Location.y)) + ' ' + (180 * parseInt($scope.skills[skill].Location.x) + 50) + ',' + (50 + 80 * parseInt($scope.skills[skill].Location.y))
              + '"/> <rect x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 50) + (180 * parseInt($scope.skills[upstream].Location.x) + 50)) / 2 - 10) + '" y="' + (((50 + 80 * parseInt($scope.skills[upstream].Location.y))
              + (50 + 80 * parseInt($scope.skills[skill].Location.y))) / 2 - 10) + '" width="20" height="20" fill="white"></rect> <text stroke="navy" text-anchor="middle" x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 50)
              + (180 * parseInt($scope.skills[upstream].Location.x) + 50)) / 2) + '" y="' + (((50 + 80 * parseInt($scope.skills[upstream].Location.y)) + (50 + 80 * parseInt($scope.skills[skill].Location.y))) / 2 + 5) + '"> '
              + $scope.skills[skill].Upstream[upstream] + '</text></svg>'
             element.append(template);
+            midMarkers(document.getElementById(upstream + '-' + skill), 50);
         }
     }
+
+    //taken from here: https://stackoverflow.com/questions/11808860/how-to-place-arrow-head-triangles-on-svg-lines
+    function midMarkers(poly,spacing){
+        var svg = poly.ownerSVGElement;
+        for (var pts=poly.points,i=1;i<pts.numberOfItems;++i){
+          var p0=pts.getItem(i-1), p1=pts.getItem(i);
+          var dx=p1.x-p0.x, dy=p1.y-p0.y;
+          var d = Math.sqrt(dx*dx+dy*dy);
+          var numPoints = Math.floor( d/spacing );
+          dx /= numPoints;
+          dy /= numPoints;
+          for (var j=numPoints-1;j>0;--j){
+            var pt = svg.createSVGPoint();
+            pt.x = p0.x+dx*j;
+            pt.y = p0.y+dy*j;
+            pts.insertItemBefore(pt,i);
+          }
+          if (numPoints>0) i += numPoints-1;
+        }
+      }      
 }])
 .directive("skillIcon", ['$compile', function($compile) {
     return {
