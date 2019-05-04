@@ -1,0 +1,27 @@
+{
+    "Landsknecht": {
+        "skills":[
+            "HpUp1",
+            "TpUp1",
+            "AtkUpP",
+            "DefUp",
+            "Axes",
+            "Swords",
+            "2Hit",
+            "WarCry",
+            "HellCry",
+            "ArmHeal",
+            "Flee",
+            "Cleaver",
+            "Tornado",
+            "Allslash",
+            "Blazer",
+            "Freezer",
+            "Shocker",
+            "Crush",
+            "Stunner",
+            "Silencer",
+            "Mine"
+        ]
+    }
+}

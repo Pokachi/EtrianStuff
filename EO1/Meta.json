@@ -3,13 +3,13 @@
     "SPPerLevel":"1",
     "initialSP":"2",
     "retirementData": {
-        "0-29": 0,
+        "No Retirement": 0,
         "30-39": 2,
         "40-49": 3,
         "50-59": 4,
         "60-69": 5,
         "70": 6
     },
-    "initialRetirementData": "0-29",
+    "initialRetirementData": "No Retirement",
     "initialClass": "Landsknecht"
 }

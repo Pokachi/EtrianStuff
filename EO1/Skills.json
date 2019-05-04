@@ -1,72 +1,317 @@
 {
-    "Landsknecht": [
-        {
-            "id": "LHp",
-            "Name": "HP Up",
-            "Description": "Increase maximum HP",
-            "Stat": [],
-            "Body": [],
-            "PreReq": [],
-            "MaxLevel": 10,
-            "Location": { "x":0, "y": 0},
-            "BoostAllowed": false,
-            "Level Data": {
-                "1": [{"HP Increase": "110%"}],
-                "2": [{"HP Increase": "111%"}],
-                "3": [{"HP Increase": "112%"}],
-                "4": [{"HP Increase": "113%"}],
-                "5": [{"HP Increase": "119%"}],
-                "6": [{"HP Increase": "120%"}],
-                "7": [{"HP Increase": "121%"}],
-                "8": [{"HP Increase": "122%"}],
-                "9": [{"HP Increase": "123%"}],
-                "10": [{"HP Increase": "130%"}]
-            }
-        },
-        {
-            "id": "LTp",
-            "Name": "TP Up",
-            "Description": "Increase maximum TP",
-            "Stat": [],
-            "Body": [],
-            "PreReq": [],
-            "MaxLevel": 10,
-            "Location": { "x":1, "y": 0},
-            "BoostAllowed": false,
-            "Level Data": {
-                "1": [{"TP Increase": "110%"}],
-                "2": [{"TP Increase": "112%"}],
-                "3": [{"TP Increase": "114%"}],
-                "4": [{"TP Increase": "116%"}],
-                "5": [{"TP Increase": "128%"}],
-                "6": [{"TP Increase": "130%"}],
-                "7": [{"TP Increase": "132%"}],
-                "8": [{"TP Increase": "134%"}],
-                "9": [{"TP Increase": "136%"}],
-                "10": [{"TP Increase": "150%"}]
-            }
+    "HpUp1": {
+        "Name": "HP Up",
+        "Description": "Increase maximum HP.",
+        "Type": "Stat Increase",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Hp Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
         }
-    ],
-    "Survivalist": [
-        "TP Up",
-        "ATK Up",
-        "DEF Up",
-        "Axes",
-        "Swords",
-        "2-Hit",
-        "Mine",
-        "War Cry",
-        "Hell Cry",
-        "Arm Heal",
-        "Crush",
-        "Stunner",
-        "Silencer",
-        "Cleaver",
-        "Tornado",
-        "Allslash",
-        "Blazer",
-        "Shocker",
-        "Freezer",
-        "Flee"
-    ]
+    },
+    "TpUp1": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "Downstream": {"Blazer": 3, "Freezer": 3, "Shocker": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
+        }
+    },
+    "AtkUpP": {
+        "Name": "ATK Up",
+        "Description": "Increase physical damage.",
+        "Type": "Stat Increase",
+        "Downstream": {"WarCry": 3, "HellCry": 10},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "STR Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "DefUp": {
+        "Name": "DEF Up",
+        "Description": "Increase physical defense.",
+        "Type": "Stat Increase",
+        "Downstream": {"ArmHeal": 1, "Flee": 5},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Phys Damage Recieved": ["95%", "94%", "93%", "92%", "91%", "90%", "89%", "88%", "87%", "85%"]
+        }
+    },
+    "Axes": {
+        "Name": "Axes",
+        "Description": "Increase damage dealt with axes.",
+        "Type": "Stat Increase",
+        "Downstream": {"Crush": 1, "Silencer": 7, "Stunner": 3, "2Hit": 5},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Swords": {
+        "Name": "Swords",
+        "Description": "Increase damage dealt with swords.",
+        "Type": "Stat Increase",
+        "Downstream": {"Blazer": 7, "Freezer": 7, "Shocker": 7, "Tornado": 5, "Cleaver": 1, "Allslash": 5, "2Hit": 5},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 2},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "2Hit": {
+        "Name": "2-Hit",
+        "Description": "Normal weapon attacks have a chance of hitting twice.",
+        "Type": "Passive",
+        "Upstream": {"Axes": 5, "Swords": 5},
+        "Downstream": {"Allslash": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Chance": ["10%", "11%", "12%", "13%", "16%", "17%", "18%", "19%", "20%", "23%"]
+        }
+    },
+    "WarCry": {
+        "Name": "War Cry",
+        "Description": "Increase attack Power at the expense of defense.",
+        "Type": "Enhancement Skill",
+        "Body": "Head",
+        "Upstream": {"AtkUpP": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "2", "2", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3"],
+            "Damage Increase": ["110%", "113%", "116%", "119%", "125%", "127%", "129%", "131%", "133%", "140%", "141%", "142%", "143%", "144%", "152$"],
+            "Damage Received": ["120%", "120%", "120%", "120%", "120%", "118%", "116%", "114%", "112%", "110%", "110%", "110%", "110%", "110%", "110%"],
+            "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%"]
+        }
+    },
+    "HellCry": {
+        "Name": "Hell Cry",
+        "Description": "Abandon defense and stamina for greatly strengthened attacks.",
+        "Type": "Enhancement Skill",
+        "Body": "Head",
+        "Upstream": {"AtkUpP": 10},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "2", "2", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3", "3"],
+            "Damage Increase": ["120%", "123%", "126%", "129%", "135%", "137%", "139%", "141%", "143%", "150%", "151%", "152%", "153%", "154%", "162$"],
+            "Damage Received": ["120%", "120%", "120%", "120%", "120%", "118%", "116%", "114%", "112%", "110%", "110%", "110%", "110%", "110%", "110%"],
+            "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%"],
+            "MaxHp Modifier": ["80%", "80%", "80%", "80%", "80%", "82%", "84%", "86%", "88%", "90%", "90%", "90%", "90%", "90%", "90%"]
+        }
+    },
+    "ArmHeal": {
+        "Name": "Arm Heal",
+        "Description": "Regain the use of bound arms.",
+        "Type": "Healing Skill",
+        "Body": "Head",
+        "Upstream": {"DefUp": 1},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "2", "2", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"],
+            "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%"]
+        }
+    },
+    "Flee": {
+        "Name": "Flee",
+        "Description": "Sacrifice HP to escape from battle to the previous floor.",
+        "Note": "This skill cannot be used in unescapable battles.",
+        "Type": "Escape Skill",
+        "FastestAction": true,
+        "Body": "Leg",
+        "Upstream": {"DefUp": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "4", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
+            "HP Loss": ["50%", "50%", "50%", "50%", "50%", "45%", "40%", "35%", "30%", "25%", "20%", "15%", "10%", "5%", "0%"],
+            "Chance": ["60%", "64%", "68%", "72%", "80%", "82%", "84%", "86%", "88%", "98%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Cleaver": {
+        "Name": "Cleaver",
+        "Description": "A rushing sword slash.",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Upstream": {"Swords": 1},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Accurcy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Tornado": {
+        "Name": "Tornado",
+        "Description": "A whirling sword skill that strikes adjacent enemies.",
+        "Note": "Deals reduced damage to the enemies to the left and right of the target",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Upstream": {"Swords": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Adjacent Power": ["100%", "102%", "104%", "106%", "118%", "120%", "122%", "124%", "126%", "140%", "142%", "144%", "146%", "148%", "164%"],
+            "Accurcy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Allslash": {
+        "Name": "Allslash",
+        "Description": "A sword skill that hits a group of enemies 2-4 times.",
+        "Type": "Sword Skill",
+        "Body": "Leg",
+        "Upstream": {"2Hit": 3, "Swords": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Accurcy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"],
+            "2 Hit Chance": ["70%", "70%", "50%", "50%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%"],
+            "3 Hit Chance": ["30%", "30%", "50%", "50%", "70%", "70%", "60%", "60%", "50%", "50%", "40%", "40%", "30%", "30%", "0%"],
+            "4 Hit Chance": ["0%", "0%", "0%", "0%", "30%", "30%", "40%", "40%", "50%", "50%", "60%", "60%", "70%", "70%", "99%"],
+            "5 Hit Chance": ["0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "0%", "1%"]
+        }
+    },
+    "Blazer": {
+        "Name": "Blazer",
+        "Description": "Sword skill that follows fire magic with a flaming slash.",
+        "Note": "This is a chaser skill, meaning if the target is attacked with fire magic, character will follow up with a fire slash",
+        "Type": "Sword Skill",
+        "FastestAction": true,
+        "Body": "Leg",
+        "Upstream": {"Swords": 7, "TpUp1": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "8", "9", "9", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Accurcy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"]
+        }
+    },
+    "Freezer": {
+        "Name": "Freezer",
+        "Description": "Sword skill that follows ice magic with a freezing slash.",
+        "Note": "This is a chaser skill, meaning if the target is attacked with ice magic, character will follow up with a ice slash",
+        "Type": "Sword Skill",
+        "FastestAction": true,
+        "Body": "Leg",
+        "Upstream": {"Swords": 7, "TpUp1": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "8", "9", "9", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Accurcy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"]
+        }
+    },
+    "Shocker": {
+        "Name": "Shocker",
+        "Description": "Sword skill that follows volt magic with a shocking slash.",
+        "Note": "This is a chaser skill, meaning if the target is attacked with volt magic, character will follow up with a volt slash",
+        "Type": "Sword Skill",
+        "FastestAction": true,
+        "Body": "Leg",
+        "Upstream": {"Swords": 7, "TpUp1": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "8", "9", "9", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Accurcy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"]
+        }
+    },
+    "Crush": {
+        "Name": "Crush",
+        "Description": "A charging axe strike.",
+        "Type": "Axe Skill",
+        "Body": "Arm",
+        "Upstream": {"Axes": 1},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"],
+            "Power": ["160%", "165%", "170%", "175%", "185%", "187%", "190%", "193%", "196%", "210%", "212%", "214%", "216%", "218%", "236%"],
+            "Accurcy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Stunner": {
+        "Name": "Stunner",
+        "Description": "An axe attack that puts the enemy off-balance.",
+        "Type": "Axe Skill",
+        "Body": "Arm",
+        "Upstream": {"Axes": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Aliment Chance": ["15%", "20%", "25%", "30%", "40%", "45%", "50%", "55%", "60%", "75%", "76%", "77%", "78%", "79%", "80%"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Silencer": {
+        "Name": "Silencer",
+        "Description": "An axe skill with a chance of binding the enemy's head.",
+        "Type": "Axe Skill",
+        "Body": "Arm",
+        "Upstream": {"Axes": 7},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
+            "Power": ["130%", "131%", "132%", "133%", "134%", "135%", "136%", "137%", "138%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Aliment Chance": ["20%", "21%", "22%", "23%", "29%", "30%", "31%", "32%", "33%", "40%", "41%", "42%", "43%", "44%", "52%"],
+            "Accurcy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Mine": {
+        "Name": "Mine",
+        "Description": "Mine for materials at item points.",
+        "Note": "There is a chance to get nothing from a gathering point. Leveling the skill increases the chance to get item. For example if an gathering spot has 80% to get an item, at level it will have 80*1.02 = 81.6% chance to get an item.",
+        "Type": "Search Skill",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Item Chance": ["100%", "102%", "104%", "106%", "110%", "111%", "112%", "113%", "114%", "120%"],
+            "Daily Limit": ["2", "4", "6", "8", "10", "12", "14", "16", "18", "20"]
+        }
+    }
 }
