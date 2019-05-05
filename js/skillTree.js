@@ -1,6 +1,19 @@
-var SkillTree = angular.module('skillTree', []);
+var SkillTree = angular.module('skillTree', ['ngRoute']);
 
-SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', function($scope, $http, $window) {
+SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$location', '$route', function($scope, $http, $window, $location, $route) {
+    //Disable reload on path change
+    var original = $location.path;
+    $location.path = function (path, reload) {
+        if (reload === false) {
+            var lastRoute = $route.current;
+            var un = $scope.$on('$locationChangeSuccess', function () {
+                $route.current = lastRoute;
+                un();
+            });
+        }
+        return original.apply($location, [path]);
+    };
+
     //Load Meta Data
     $http.get($window.folderName + '/Meta.json')
     .then(function(meta){
@@ -12,7 +25,7 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
         }
 
         //This object will contain a list of all the skills on screen and their allocation
-        $scope.skillAllocation = [];
+        $scope.skillAllocation = {};
 
         //initialize classes
         $scope.class = {
@@ -60,13 +73,62 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
 
             //Skill Initialization
             $scope.skills = skills.data;
+            
+            init();
         });
+
+    //Save
+    $scope.saveData = {};
+    $scope.save = function() {
+        $scope.saveData = {};
+        $scope.saveData.Skills = [];
+        for (var skill in $scope.skillAllocation) {
+            $scope.saveData.Skills.push($scope.skillAllocation[skill]);
+        }
+        $scope.saveData.Class = $scope.class.selected;
+        $scope.saveData.Level = $scope.level.selected;
+        $scope.saveData.Retirement = $scope.retirement.selected;
+        saveData =LZString.compressToEncodedURIComponent(angular.toJson($scope.saveData));
+        return saveData;
+    }
+
+    //Load if Possible
+    var init = function() {
+        query = $location.path().substring(1, $location.path().length);
+        $scope.saveData = angular.fromJson(LZString.decompressFromEncodedURIComponent(query));
+        if ($scope.saveData != null) {
+            $scope.class.selected = $scope.saveData.Class;
+            $scope.level.selected = $scope.saveData.Level;
+            $scope.retirement.selected = $scope.saveData.Retirement;
+
+            var i = 0;
+            for (var skill in $scope.class.classData[$scope.class.selected].skills) {
+                $scope.skillAllocation[$scope.class.classData[$scope.class.selected].skills[skill]] = $scope.saveData.Skills[i];
+                $scope.skillPoints.usedSkillPoints += $scope.saveData.Skills[i] == undefined ? 0 : $scope.saveData.Skills[i];
+                i++;
+            }
+            
+            var retiredSp = $scope.retirement.retirementData[$scope.retirement.selected];
+            retiredSp = undefined ? '0' : retiredSp;
+            $scope.skillPoints.totalSkillPoints = parseInt($scope.skillPoints.initialSP) + parseInt($scope.level.selected) + parseInt(retiredSp);
+        }
+    };
+
+    $scope.updateClass = function() {
+        $scope.skillAllocation = {};
+        $scope.skillPoints.usedSkillPoints = 0;
+        newUrl = $scope.save();
+        $location.path(newUrl, false);
+    }
 
     //Update skill points when selected level or retirement is changed
     $scope.updateSP = function() {
         var retiredSp = $scope.retirement.retirementData[$scope.retirement.selected];
         retiredSp = undefined ? '0' : retiredSp;
         $scope.skillPoints.totalSkillPoints = parseInt($scope.skillPoints.initialSP) + parseInt($scope.level.selected) + parseInt(retiredSp);
+
+        newUrl = $scope.save();
+        $location.path(newUrl, false);
     };
 
     //Increase point in a skill
@@ -80,6 +142,9 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
             $scope.skillAllocation[skill] += points;
             $scope.skillPoints.usedSkillPoints += points;
         }
+        
+        newUrl = $scope.save();
+        $location.path(newUrl, false);
     }
 
     //Decrease point in a skill
@@ -94,6 +159,8 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
                 $scope.decreasePoint(downstream, $scope.skillAllocation[downstream]);
             }
         }
+        newUrl = $scope.save();
+        $location.path(newUrl, false);
     }
 
     //Disable a skill
@@ -193,7 +260,9 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
             angular.element(document).ready(function() {
                 $scope.$apply(function() {
                     //Initialize the skill in skill allocation table
-                    $scope.skillAllocation[$attrs.skill] = 0;
+                    if ($scope.skillAllocation[$attrs.skill] == undefined) {
+                        $scope.skillAllocation[$attrs.skill] = 0;
+                    }
                     
                     //Read the skill data and create a div
                     skill = $scope.skills[$attrs.skill];

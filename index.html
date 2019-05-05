@@ -2,7 +2,9 @@
 <html>
     <head>
         <title>Etrian Odyssey Skill Simulator</title>
+        <script src="./js/lz-string.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js"></script>
         <script src="./js/skillTree.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/skillTree.css">
     </head>
@@ -17,7 +19,7 @@
                     <img src="EO1/images/Etrian_Odyssey_logo.png" height="100px"></img>
                 </div>
                 <div class="class-selection">
-                    <span>Class: </span><select ng-model="class.selected" ng-options="class for class in class.classes"></select>
+                    <span>Class: </span><select ng-model="class.selected" ng-options="class for class in class.classes" ng-change="updateClass()"></select>
                 </div>
                 
                 <div class="level-selection">
@@ -27,7 +29,7 @@
                     <span>Retirement: </span><select ng-model="retirement.selected" ng-options="retirement for retirement in retirement.retirements | orderBy" ng-change="updateSP()"></select>
                 </div>
                 <div class="boost-selection">
-                    <label><p>Boost: <input type="checkbox" ng-model="boost" ng-change="updateSkillAllocation()" ng-init="boost=false" /> <span class="custom-checkbox"></span></p></label>
+                    <label><p>Boost: <input type="checkbox" ng-model="boost" ng-init="boost=false" /> <span class="custom-checkbox"></span></p></label>
                 </div>
                 <div class="sp-count">
                     <p ng-class="{overspend: skillPoints.usedSkillPoints > skillPoints.totalSkillPoints}">SP: {{skillPoints.usedSkillPoints}} / {{skillPoints.totalSkillPoints}}</p>
