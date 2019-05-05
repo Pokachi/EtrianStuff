@@ -1,0 +1,29 @@
+<table class="skill-description-table" ng-class="{'display-top' : skills[selectedSkill].Location.y > 3, 'display-left' : skills[selectedSkill].Location.x > 3, 'display-top-left' : skills[selectedSkill].Location.x > 3 && skills[selectedSkill].Location.y > 3}">
+    <tr>
+        <th colspan="3" class="table-top-left">Name</th>
+        <th colspan="3">Body Part</th>
+        <th colspan="{{skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0) - 4}}" class="table-top-right">Skill Type</th>
+    </tr>
+    <tr>
+        <td colspan="3">{{skills[selectedSkill].Name}}</td>
+        <td colspan="3">{{skills[selectedSkill].Body == undefined ? "N/A" : skills[selectedSkill].Body}}</td>
+        <td colspan="{{skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0) - 4}}">{{skills[selectedSkill].Type}}</td>
+    </tr>
+    <tr>
+        <td colspan="{{3 + skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0) - 1}}">{{skills[selectedSkill].Description}}</td>
+    </tr>
+    <tr ng-if="skills[selectedSkill].Note">
+        <th colspan="{{3 + skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0) - 1}}">Note</td>
+    </tr>
+    <tr ng-if="skills[selectedSkill].Note">
+        <td colspan="{{3 + skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0) - 1}}">{{skills[selectedSkill].Note}}</td>
+    </tr>
+    <tr>
+        <th colspan="2"> Level </th>
+        <th ng-repeat="level in [].constructor(skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0)) track by $index" ng-class="{'selected' : skillAllocation[selectedSkill] == $index + 1}">{{$index + 1}}</th>
+    </tr>
+    <tr ng-repeat="(name, effects) in formattedSkillData">
+        <th colspan="2" ng-class="{'table-bottom-left' : $last}"> {{name}} </th>
+        <td colspan="{{getValue(count)}}" ng-if="getValue(count) != 0" ng-repeat="(value, count) in effects" ng-class="{'table-bottom-right' : $last && $parent.$last, 'selected' : skillAllocation[selectedSkill] != 0 && ((boost == false && skillLevelIndex[name][skillAllocation[selectedSkill] - 1] == $index) || (boost == true && name != 'TP Cost' && skillLevelIndex[name][skillAllocation[selectedSkill] + 4] == $index) || (boost == true && name == 'TP Cost' && skillLevelIndex[name][skillAllocation[selectedSkill] - 1] == $index))}">{{getKey(count)}}</td>
+    </tr>
+</table>

@@ -110,11 +110,11 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
     $scope.drawLine = function(skill, element) {
         for (upstream in $scope.skills[skill].Upstream) {
             template = '<svg class="line" width="1000" height="600"><marker id="mid" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="navy" /></marker>'
-             + '<polyline id="' + upstream + '-' + skill + '" marker-mid="url(#mid)"  points="' + (180 * parseInt($scope.skills[upstream].Location.x) + 50)
-             + ',' + (50 + 80 * parseInt($scope.skills[upstream].Location.y)) + ' ' + (180 * parseInt($scope.skills[skill].Location.x) + 50) + ',' + (50 + 80 * parseInt($scope.skills[skill].Location.y))
-             + '"/> <rect x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 50) + (180 * parseInt($scope.skills[upstream].Location.x) + 50)) / 2 - 10) + '" y="' + (((50 + 80 * parseInt($scope.skills[upstream].Location.y))
-             + (50 + 80 * parseInt($scope.skills[skill].Location.y))) / 2 - 10) + '" width="20" height="20" fill="white"></rect> <text stroke="navy" text-anchor="middle" x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 50)
-             + (180 * parseInt($scope.skills[upstream].Location.x) + 50)) / 2) + '" y="' + (((50 + 80 * parseInt($scope.skills[upstream].Location.y)) + (50 + 80 * parseInt($scope.skills[skill].Location.y))) / 2 + 5) + '"> '
+             + '<polyline id="' + upstream + '-' + skill + '" marker-mid="url(#mid)"  points="' + (180 * parseInt($scope.skills[upstream].Location.x) + 55)
+             + ',' + (70 + 100 * parseInt($scope.skills[upstream].Location.y)) + ' ' + (180 * parseInt($scope.skills[skill].Location.x) + 55) + ',' + (70 + 100 * parseInt($scope.skills[skill].Location.y))
+             + '"/> <rect x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 55) + (180 * parseInt($scope.skills[upstream].Location.x) + 55)) / 2 - 10) + '" y="' + (((70 + 100 * parseInt($scope.skills[upstream].Location.y))
+             + (70 + 100 * parseInt($scope.skills[skill].Location.y))) / 2 - 10) + '" width="20" height="20" fill="#7373b9"></rect> <text stroke="navy" text-anchor="middle" x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 55)
+             + (180 * parseInt($scope.skills[upstream].Location.x) + 55)) / 2) + '" y="' + (((70 + 100 * parseInt($scope.skills[upstream].Location.y)) + (70 + 100 * parseInt($scope.skills[skill].Location.y))) / 2 + 5) + '"> '
              + $scope.skills[skill].Upstream[upstream] + '</text></svg>'
             element.append(template);
             midMarkers(document.getElementById(upstream + '-' + skill), 10);
@@ -125,21 +125,66 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
     function midMarkers(poly,spacing){
         var svg = poly.ownerSVGElement;
         for (var pts=poly.points,i=1;i<pts.numberOfItems;++i){
-          var p0=pts.getItem(i-1), p1=pts.getItem(i);
-          var dx=p1.x-p0.x, dy=p1.y-p0.y;
-          var d = Math.sqrt(dx*dx+dy*dy);
-          var numPoints = Math.floor( d/spacing );
-          dx /= numPoints;
-          dy /= numPoints;
-          for (var j=numPoints-1;j>0;--j){
-            var pt = svg.createSVGPoint();
-            pt.x = p0.x+dx*j;
-            pt.y = p0.y+dy*j;
-            pts.insertItemBefore(pt,i);
-          }
-          if (numPoints>0) i += numPoints-1;
+            var p0=pts.getItem(i-1), p1=pts.getItem(i);
+            var dx=p1.x-p0.x, dy=p1.y-p0.y;
+            var d = Math.sqrt(dx*dx+dy*dy);
+            var numPoints = Math.floor( d/spacing );
+            dx /= numPoints;
+            dy /= numPoints;
+            for (var j=numPoints-1;j>0;--j){
+                var pt = svg.createSVGPoint();
+                pt.x = p0.x+dx*j;
+                pt.y = p0.y+dy*j;
+                pts.insertItemBefore(pt,i);
+            }
+            if (numPoints>0) i += numPoints-1;
         }
-      }      
+    }
+
+    //$attributes for skilldescriptions
+    $scope.skillDescriptionBlock = {}; //list of divs for descriptions
+    $scope.selectedSkill = ""; //selected skill to show description for
+    $scope.formattedSkillData = {};
+    $scope.skillLevelIndex = {};
+
+    $scope.formatSkillData = function(skill) {
+        $scope.formattedSkillData = {};
+        for (var dataName in $scope.skills[skill].LevelData) {
+            $scope.formattedSkillData[dataName] = [];
+            $scope.skillLevelIndex[dataName] = [];
+            var i = 0;
+            var x = 0;
+            for (var j = 0; j < $scope.skills[skill].LevelData[dataName].length; j++) {
+                $scope.formattedSkillData[dataName][x] = {};
+                $scope.formattedSkillData[dataName][x][$scope.skills[skill].LevelData[dataName][j]] = 0;
+
+                if ($scope.formattedSkillData[dataName][i] == undefined) {
+                    $scope.formattedSkillData[dataName][i] = {};
+                    $scope.formattedSkillData[dataName][i][$scope.skills[skill].LevelData[dataName][j]] = 1;
+                    
+                    $scope.skillLevelIndex[dataName][x] = i;
+                } else {
+                    if ($scope.formattedSkillData[dataName][i][$scope.skills[skill].LevelData[dataName][j]] != undefined) {
+                        $scope.formattedSkillData[dataName][i][$scope.skills[skill].LevelData[dataName][j]]++;
+                        $scope.skillLevelIndex[dataName][x] = i;
+                    } else {
+                        i = x;
+                        $scope.formattedSkillData[dataName][i] = {};
+                        $scope.formattedSkillData[dataName][i][$scope.skills[skill].LevelData[dataName][j]] = 1;
+                        
+                        $scope.skillLevelIndex[dataName][x] = i;
+                    }
+                }
+                x++;
+            }
+        }
+    }
+    $scope.getKey = function (obj) {
+        return Object.keys(obj)[0];
+    }
+    $scope.getValue = function (obj) {
+        return Object.values(obj)[0];
+    }
 }])
 .directive("skillIcon", ['$compile', function($compile) {
     return {
@@ -152,19 +197,47 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
                     
                     //Read the skill data and create a div
                     skill = $scope.skills[$attrs.skill];
-                    skillBlock = $compile('<div class="skill-icon" style="left:' + 180 * parseInt($scope.skills[$attrs.skill].Location.x) + 'px; top:' + (100 + 80 * parseInt($scope.skills[$attrs.skill].Location.y)) + 'px; " ng-class="{disabled: shouldDisable(\'' + $attrs.skill + '\')}">' + skill.Name + ' <div class="skill-allocation"> {{skillAllocation[\'' + $attrs.skill + '\']}}/' + skill.MaxLevel + '</div></div>')($scope);
-                    dummyBlock = '<div class="dummy" style="left:' + 180 * parseInt($scope.skills[$attrs.skill].Location.x) + 'px; top:' + (100 + 80 * parseInt($scope.skills[$attrs.skill].Location.y)) + 'px; " ng-class="{disabled: shouldDisable(\'' + $attrs.skill + '\')}"/>';
+                    skillBlock = $compile('<skill id="' + $attrs.selectedClass + "-" + $attrs.skill + '" class="skill-icon" style="left:' + (60 + 180 * parseInt($scope.skills[$attrs.skill].Location.x)) + 'px; top:' + (170 + 100 * parseInt($scope.skills[$attrs.skill].Location.y))
+                    + 'px; " ng-class="{disabled: shouldDisable(\'' + $attrs.skill + '\')}" skill=\'' + $attrs.skill + '\' selectedClass=\'' + $attrs.selectedClass + '\'>' + skill.Name
+                    + ' <div class="skill-allocation"> {{skillAllocation[\'' + $attrs.skill + '\']}}/' + skill.MaxLevel + '</div></skill>')($scope);
                     //Create buttons
                     buttonDiv = angular.element("<div/>");
                     increaseButton = $compile('<button ng-click="increasePoint(\'' + $attrs.skill + '\', 1)" class="increase button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] >= skills[\'' + $attrs.skill + '\'].MaxLevel}"> + </button>')($scope);
                     minusButton = $compile('<button ng-click="decreasePoint(\'' + $attrs.skill + '\', 1)" class="minus button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] == 0}"> - </button>')($scope);
-                    $element.append(dummyBlock).append(skillBlock.append(buttonDiv.append(increaseButton).append(minusButton)));
+                    $element.append(skillBlock.append(buttonDiv.append(increaseButton).append(minusButton)));
 
                     //draw lines
                     $scope.drawLine($attrs.skill, $element);
-                    //<div class="line" style="width: 24px; height: 4px; left: 240px; top: 120px;"></div>
                 });
             });
         }
+    };
+}])
+.directive("skill", ['$compile', function($compile) {
+    return {
+        restrict: 'E',
+        link: function($scope, $element, $attrs) {
+            angular.element(document).ready(function() {
+                $scope.skillDescriptionBlock[$attrs.skill] = {
+                    persist: false
+                };
+                $scope.skillDescriptionBlock[$attrs.skill].data = $compile('<skill-description skill="' + $attrs.skill + '" />')($scope);
+                $element.bind("mouseover", function() {
+                    $scope.$apply(function() {
+                        $scope.formatSkillData($attrs.skill);
+                        $scope.selectedSkill = $attrs.skill;
+                        $element.append($scope.skillDescriptionBlock[$attrs.skill].data);
+                    });
+                });
+                $element.bind("mouseleave", function() {
+                    $scope.skillDescriptionBlock[$attrs.skill].data.remove();
+                });
+            });
+        }
+    };
+}]).directive("skillDescription", ['$compile', function($compile) {
+    return {
+        restrict: 'E',
+        templateUrl: '.\\template\\skillPopup.html'
     };
 }]);

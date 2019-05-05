@@ -23,5 +23,10 @@
             "Silencer",
             "Mine"
         ]
+    },
+    "Survivalist": {
+        "skills":[
+            "HpUp1"
+        ]
     }
 }
