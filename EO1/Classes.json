@@ -26,7 +26,27 @@
     },
     "Survivalist": {
         "skills":[
-            "HpUp2"
+            "HpUp2",
+            "TpUp1",
+            "AgiUp",
+            "Bows",
+            "Multihit",
+            "Disable",
+            "Apollon",
+            "Trueshot",
+            "Ambush",
+            "OwlEye",
+            "Aware",
+            "Stalker",
+            "Quicken",
+            "Trickery",
+            "Escape",
+            "Cloak",
+            "1stTurn",
+            "1stHit",
+            "ChopS",
+            "Mine",
+            "TakeS"
         ]
     }
 }
