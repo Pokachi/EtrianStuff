@@ -183,6 +183,9 @@ th {
 .table-bottom-right {
     border-radius: 0 0 .4rem 0;
 }
+.table-bottom {
+    border-radius: 0 0 .4rem .4rem;
+}
 
 .skill-icon {
     color: navy;
@@ -247,5 +250,6 @@ th {
 }
 
 .selected {
+    background: #5e6fdf;
     color: yellow;
 }

@@ -229,7 +229,7 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', funct
                         $element.append($scope.skillDescriptionBlock[$attrs.skill].data);
                     });
                 });
-                $element.bind("mouseleave", function() {
+                $element.bind("mouseout", function() {
                     $scope.skillDescriptionBlock[$attrs.skill].data.remove();
                 });
             });

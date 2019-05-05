@@ -23,7 +23,10 @@
         <th ng-repeat="level in [].constructor(skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0)) track by $index" ng-class="{'selected' : skillAllocation[selectedSkill] == $index + 1}">{{$index + 1}}</th>
     </tr>
     <tr ng-repeat="(name, effects) in formattedSkillData">
-        <th colspan="2" ng-class="{'table-bottom-left' : $last}"> {{name}} </th>
-        <td colspan="{{getValue(count)}}" ng-if="getValue(count) != 0" ng-repeat="(value, count) in effects" ng-class="{'table-bottom-right' : $last && $parent.$last, 'selected' : skillAllocation[selectedSkill] != 0 && ((boost == false && skillLevelIndex[name][skillAllocation[selectedSkill] - 1] == $index) || (boost == true && name != 'TP Cost' && skillLevelIndex[name][skillAllocation[selectedSkill] + 4] == $index) || (boost == true && name == 'TP Cost' && skillLevelIndex[name][skillAllocation[selectedSkill] - 1] == $index))}">{{getKey(count)}}</td>
+        <th colspan="2" > {{name}} </th>
+        <td colspan="{{getValue(count)}}" ng-if="getValue(count) != 0" ng-repeat="(value, count) in effects" ng-class="{'selected' : skillAllocation[selectedSkill] != 0 && (((boost == false || !skills[selectedSkill].BoostAllowed) && skillLevelIndex[name][skillAllocation[selectedSkill] - 1] == $index) || (skills[selectedSkill].BoostAllowed && ((boost == true && name != 'TP Cost' && skillLevelIndex[name][skillAllocation[selectedSkill] + 4] == $index) || (boost == true && name == 'TP Cost' && skillLevelIndex[name][skillAllocation[selectedSkill] - 1] == $index))))}">{{getKey(count)}}</td>
+    </tr>
+    <tr>
+        <td class="table-bottom" colspan="{{3 + skills[selectedSkill].MaxLevel + (skills[selectedSkill].BoostAllowed ? 5 : 0) - 1}}">{{skills[selectedSkill].Note}}</td>
     </tr>
 </table>
