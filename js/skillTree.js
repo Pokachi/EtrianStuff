@@ -116,6 +116,9 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
 
     $scope.updateClass = function() {
         $scope.skillAllocation = {};
+        for (var skill in $scope.class.classData[$scope.class.selected].skills) {
+            $scope.skillAllocation[$scope.class.classData[$scope.class.selected].skills[skill]] = 0;
+        }
         $scope.skillPoints.usedSkillPoints = 0;
         newUrl = $scope.save();
         $location.path(newUrl, false);
