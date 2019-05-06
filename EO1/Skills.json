@@ -1509,6 +1509,244 @@
             "TP Cost": ["15", "14", "13", "12", "10", "9", "8", "7", "6", "5"]
         }
     },
+    "FireUp": {
+        "Name": "Fire Up",
+        "Description": "Increase fire damage. Needed to learn fire skills.",
+        "Type": "Stat Increase",
+        "Downstream": {"Fire": 1, "Inferno": 5, "Flame": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Fire Damage Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Toxins": {
+        "Name": "Toxins",
+        "Description": "Increase poison damage. Needed to learn poison skills.",
+        "Type": "Stat Increase",
+        "Note": "This skill is bugged and does not do anything",
+        "Downstream": {"Poison": 1, "Venom": 5},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 4},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Fire Damage Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "IceUp": {
+        "Name": "Ice Up",
+        "Description": "Increase ice damage. Needed to learn ice skills.",
+        "Type": "Stat Increase",
+        "Downstream": {"Ice": 1, "Cocytus": 5, "Freeze": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Ice Damage Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "VoltUp": {
+        "Name": "Volt Up",
+        "Description": "Increase volt damage. Needed to learn volt skills.",
+        "Downstream": {"Volt": 1, "Thor": 5, "Thunder": 3},
+        "Type": "Stat Increase",
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 5},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Volt Damage Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Fire": {
+        "Name": "Fire",
+        "Description": "Conjure forth fire to attack the enemy.",
+        "Type": "Fire Skill",
+        "Body": "Head",
+        "Upstream": {"FireUp": 1},
+        "Downstream": {"Flame": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["80%", "85%", "90%", "100%", "105%", "110%", "115%", "120%", "125%", "130%", "135%", "140%", "145%", "150%", "155%"],
+            "Damage Boost": ["10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "80%", "80%", "80%", "80%", "80%"]
+        }
+    },
+    "Ice": {
+        "Name": "Ice",
+        "Description": "Conjure forth ice to attack the enemy.",
+        "Type": "Ice Skill",
+        "Body": "Head",
+        "Upstream": {"IceUp": 1},
+        "Downstream": {"Freeze": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["80%", "85%", "90%", "100%", "105%", "110%", "115%", "120%", "125%", "130%", "135%", "140%", "145%", "150%", "155%"],
+            "Damage Boost": ["10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "80%", "80%", "80%", "80%", "80%"]
+        }
+    },
+    "Volt": {
+        "Name": "Volt",
+        "Description": "Conjure forth voltage to attack the enemy.",
+        "Type": "Volt Skill",
+        "Body": "Head",
+        "Upstream": {"VoltUp": 1},
+        "Downstream": {"Thunder": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["80%", "85%", "90%", "100%", "105%", "110%", "115%", "120%", "125%", "130%", "135%", "140%", "145%", "150%", "155%"],
+            "Damage Boost": ["10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "80%", "80%", "80%", "80%", "80%"]
+        }
+    },
+    "Flame": {
+        "Name": "Flame",
+        "Description": "Conjure forth flame to attack the enemy.",
+        "Type": "Fire Skill",
+        "Body": "Head",
+        "Upstream": {"FireUp": 3, "Fire": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "11", "12", "13", "14", "14", "14", "14", "14", "14"],
+            "Power": ["140%", "160%", "180%", "200%", "230%", "250%", "270%", "290%", "310%", "350%", "370%", "390%", "410%", "430%", "480%"],
+            "Damage Boost": ["10", "10", "9", "9", "8", "8", "7", "7", "6", "6", "6", "6", "6", "6", "6"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "60%", "60%", "60%", "60%", "60%"]
+        }
+    },
+    "Freeze": {
+        "Name": "Freeze",
+        "Description": "Conjure forth icicles to attack the enemy.",
+        "Type": "Ice Skill",
+        "Body": "Head",
+        "Upstream": {"IceUp": 3, "Ice": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "11", "12", "13", "14", "14", "14", "14", "14", "14"],
+            "Power": ["140%", "160%", "180%", "200%", "230%", "250%", "270%", "290%", "310%", "350%", "370%", "390%", "410%", "430%", "480%"],
+            "Damage Boost": ["10", "10", "9", "9", "8", "8", "7", "7", "6", "6", "6", "6", "6", "6", "6"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "60%", "60%", "60%", "60%", "60%"]
+        }
+    },
+    "Thunder": {
+        "Name": "Thunder",
+        "Description": "Conjure forth lightning to attack the enemy.",
+        "Type": "Volt Skill",
+        "Body": "Head",
+        "Upstream": {"VoltUp": 3, "Volt": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "11", "12", "13", "14", "14", "14", "14", "14", "14"],
+            "Power": ["140%", "160%", "180%", "200%", "230%", "250%", "270%", "290%", "310%", "350%", "370%", "390%", "410%", "430%", "480%"],
+            "Damage Boost": ["10", "10", "9", "9", "8", "8", "7", "7", "6", "6", "6", "6", "6", "6", "6"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "40%", "60%", "60%", "60%", "60%", "60%"]
+        }
+    },
+    "Inferno": {
+        "Name": "Inferno",
+        "Description": "Conjure forth an inferno to attack the enemy.",
+        "Type": "Fire Skill",
+        "Body": "Head",
+        "Upstream": {"FireUp": 5},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["16", "17", "18", "19", "20", "20", "20", "20", "20", "20"],
+            "Power": ["112%", "128%", "144%", "160%", "184%", "200%", "216%", "232%", "248%", "280%", "296%", "312%", "328%", "344%", "384%"],
+            "Damage Boost": ["10", "10", "9", "9", "8", "8", "7", "7", "6", "6", "6", "6", "6", "6", "6"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Cocytus": {
+        "Name": "Cocytus",
+        "Description": "Conjure forth a blizzard to attack the enemy.",
+        "Type": "Ice Skill",
+        "Body": "Head",
+        "Upstream": {"IceUp": 5},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["16", "17", "18", "19", "20", "20", "20", "20", "20", "20"],
+            "Power": ["112%", "128%", "144%", "160%", "184%", "200%", "216%", "232%", "248%", "280%", "296%", "312%", "328%", "344%", "384%"],
+            "Damage Boost": ["10", "10", "9", "9", "8", "8", "7", "7", "6", "6", "6", "6", "6", "6", "6"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Thor": {
+        "Name": "Thor",
+        "Description": "Conjure forth divine thunder to attack the enemy.",
+        "Type": "Volt Skill",
+        "Body": "Head",
+        "Upstream": {"VoltUp": 5},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["16", "17", "18", "19", "20", "20", "20", "20", "20", "20"],
+            "Power": ["112%", "128%", "144%", "160%", "184%", "200%", "216%", "232%", "248%", "280%", "296%", "312%", "328%", "344%", "384%"],
+            "Damage Boost": ["10", "10", "9", "9", "8", "8", "7", "7", "6", "6", "6", "6", "6", "6", "6"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Poison": {
+        "Name": "Poison",
+        "Description": "Chance of transmuting an enemy's blood to poison.",
+        "Type": "Poison Skill",
+        "Body": "Head",
+        "Upstream": {"Toxins": 1},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Poison Chance": ["200%", "202%", "204%", "206%", "220%", "222%", "224%", "226%", "228%", "250%", "252%", "254%", "256%", "258%", "280%"],
+            "Poison Damage": ["23", "43", "63", "83", "123", "163", "203", "243", "255", "255", "255", "255", "255", "255", "255"],
+            "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "80%", "80%", "80%", "80%", "80%"]
+        }
+    },
+    "Venom": {
+        "Name": "Venom",
+        "Description": "Chance of transmuting all enemy's blood to poison.",
+        "Type": "Poison Skill",
+        "Body": "Head",
+        "Upstream": {"Toxins": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "11", "12", "13", "14", "14", "14", "14", "14", "14"],
+            "Poison Chance": ["200%", "202%", "204%", "206%", "220%", "222%", "224%", "226%", "228%", "250%", "252%", "254%", "256%", "258%", "280%"],
+            "Poison Damage": ["23", "43", "63", "83", "123", "163", "203", "243", "255", "255", "255", "255", "255", "255", "255"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+
 
     "Mine": {
         "Name": "Mine",
