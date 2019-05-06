@@ -55,6 +55,16 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
         }
     });
 
+    //Load Skill Data
+    $http.get($window.folderName + '/Skills.json')
+        .then(function(skills){
+
+            //Skill Initialization
+            $scope.skills = skills.data;
+            
+            init();
+        });
+
     //Load Class Data
     $http.get($window.folderName + '/Classes.json')
         .then(function(classes){
@@ -66,17 +76,6 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
             $scope.class.classData = classes.data;
         });
             
-
-    //Load Skill Data
-    $http.get($window.folderName + '/Skills.json')
-        .then(function(skills){
-
-            //Skill Initialization
-            $scope.skills = skills.data;
-            
-            init();
-        });
-
     //Save
     $scope.saveData = {};
     $scope.save = function() {
