@@ -62,7 +62,6 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
             //Skill Initialization
             $scope.skills = skills.data;
             
-            init();
         });
 
     //Load Class Data
@@ -74,6 +73,9 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
                 $scope.class.classes.push(key);
             };
             $scope.class.classData = classes.data;
+
+            //Try to init after everything is loaded
+            init();
         });
             
     //Save
