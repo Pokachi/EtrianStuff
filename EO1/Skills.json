@@ -10,6 +10,17 @@
             "Hp Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
         }
     },
+    "HpUpD": {
+        "Name": "HP Up",
+        "Description": "Increase maximum HP.",
+        "Type": "Stat Increase",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Hp Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
     "HpUpP": {
         "Name": "HP Up",
         "Description": "Increase maximum HP.",
@@ -38,6 +49,18 @@
         "Description": "Increase maximum TP.",
         "Type": "Stat Increase",
         "Downstream": {"Blazer": 3, "Freezer": 3, "Shocker": 3},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
+        }
+    },
+    "TpUpD": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "Downstream": {"CloakD": 3},
         "MaxLevel": 10,
         "Location": { "x":0, "y": 1},
         "BoostAllowed": false,
@@ -502,7 +525,7 @@
         "Body": "Arm",
         "Upstream": {"Bows": 1},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 1},
+        "Location": { "x":3, "y": 1},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
@@ -535,7 +558,7 @@
         "Body": "Arm",
         "Upstream": {"Bows": 3},
         "MaxLevel": 10,
-        "Location": { "x":5, "y": 2},
+        "Location": { "x":4, "y": 1},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
@@ -847,10 +870,309 @@
         }
     },
 
+    "CloakD": {
+        "Name": "Cloak",
+        "Description": "Hide in the shadows so the enemy won't target you.",
+        "Type": "Special Skill",
+        "Body": "Leg",
+        "Upstream": {"TpUpD": 3},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "2", "2", "3", "3", "3", "3", "3", "3"],
+            "Provoke Chance": ["50%", "48%", "46%", "44%", "40%", "38%", "36%", "34%", "32%", "26%", "24%", "22%", "20%", "18%", "10%"],
+            "Speed Modifier": ["110%", "110%", "110%", "110%", "110%", "110%", "110%", "110%", "110%", "110%", "130%", "130%", "130%", "130%", "130%"]
+        }
+    },
+    "Whips": {
+        "Name": "Whips",
+        "Description": "Increase whip damage. Needed to learn whip skills.",
+        "Type": "Stat Increase",
+        "Downstream": {"Viper": 1, "Gag": 2, "Shackles": 3, "Cuffs": 4, "Ecstasy": 5, "Climax": 10},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Viper": {
+        "Name": "Viper",
+        "Description": "Whip attack with a chance of poisoning the enemy.",
+        "Type": "Whip Skill",
+        "Body": "Arm",
+        "Upstream": {"Whips": 1},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "180%", "185%", "190%", "195%", "200%", "210%"],
+            "Poison Damage": ["11", "17", "23", "29", "39", "45", "51", "57", "63", "77", "79", "81", "83", "85", "103"],
+            "Poison Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Climax": {
+        "Name": "Climax",
+        "Description": "Whip skill that may kill and drain enemies with low HP.",
+        "Type": "Whip Skill",
+        "Body": "Arm",
+        "Upstream": {"Whips": 10},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Power": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"],
+            "HP Requirement": ["5%", "6%", "7%", "8%", "14%", "15%", "16%", "17%", "18%", "25%", "26%", "27%", "28%", "29%", "30%"],
+            "Accuracy Modifier": ["75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%", "75%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Gag": {
+        "Name": "Gag",
+        "Description": "Whip attack with a chance of binding the enemy's head.",
+        "Type": "Whip Skill",
+        "Body": "Arm",
+        "Note": "JP wiki have binding chance at 38 at level and 41 at level 4, but the data I was given is the opposite. So... I don't know which is correct.",
+        "Upstream": {"Whips": 2},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Power": ["130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "180%", "185%", "190%", "195%", "200%", "210%"],
+            "Aliement chance": ["35%", "36%", "41%", "38%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Shackles": {
+        "Name": "Shackles",
+        "Description": "Whip attack with a chance of binding the enemy's legs.",
+        "Type": "Whip Skill",
+        "Body": "Arm",
+        "Note": "JP wiki have binding chance at 38 at level and 41 at level 4, but the data I was given is the opposite. So... I don't know which is correct.",
+        "Upstream": {"Whips": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Power": ["130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "180%", "185%", "190%", "195%", "200%", "210%"],
+            "Aliement chance": ["35%", "36%", "41%", "38%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Cuffs": {
+        "Name": "Cuffs",
+        "Description": "Whip attack with a chance of binding the enemy's arms.",
+        "Type": "Whip Skill",
+        "Body": "Arm",
+        "Note": "JP wiki have binding chance at 38 at level and 41 at level 4, but the data I was given is the opposite. So... I don't know which is correct.",
+        "Upstream": {"Whips": 4},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Power": ["130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "180%", "185%", "190%", "195%", "200%", "210%"],
+            "Aliement chance": ["35%", "36%", "41%", "38%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Ecstasy": {
+        "Name": "Ecstasy",
+        "Description": "Whip attack that does incredible damage to totally bound enemies.",
+        "Type": "Whip Skill",
+        "Body": "Arm",
+        "Upstream": {"Whips": 5,"AtkUpD": 5},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "9", "10", "11", "12", "12", "12", "12", "12", "12"],
+            "Power (3 binds)": ["500%", "510%", "520%", "530%", "590%", "600%", "610%", "620%", "630%", "700%", "710%", "720%", "730%", "740%", "820%"],
+            "Power (0-2 binds)": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"],
+            "Accuracy Modifier": ["200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "AtkUpD": {
+        "Name": "ATK Up",
+        "Description": "Increase physical damage.",
+        "Type": "Stat Increase",
+        "Downstream": {"Ecstasy": 5, "Fury": 5, "Bait": 5, "BoostUp": 5},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "STR Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Fury": {
+        "Name": "Fury",
+        "Description": "Increase damage dealth when HP is low.",
+        "Type": "Passive Skill",
+        "Upstream": {"AtkUpD": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 2},
+        "BoostAllowed": false,
+        "LevelData": {
+            "HP Amount": ["30%", "30%", "30%", "30%", "30%", "34%", "38%", "42%", "46%", "50%"],
+            "Damage Increase": ["10%", "15%", "20%", "25%", "30%", "20%", "20%", "20%", "20%", "20%"]
+        }
+    },
+    "BoostUp": {
+        "Name": "Boost Up",
+        "Description": "Increase the improvement gained when boosted.",
+        "Type": "Passive Skill",
+        "Upstream": {"AtkUpD": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 4},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Boost Bonus": ["1", "1", "2", "2", "3", "3", "4", "4", "5", "5"]
+        }
+    },
+    "Bait": {
+        "Name": "Bait",
+        "Description": "Sword skill that uses comrades on either side to bait a trap.",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Note": "Counter attack when you or adjacent allies are attacked by a physical attack.",
+        "Upstream": {"SwordsD": 5, "AtkUpD": 5},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "9", "10", "11", "12", "12", "12", "12", "12", "12"],
+            "Power": ["200%", "210%", "220%", "230%", "250%", "260%", "270%", "280%", "290%", "320%", "330%", "340%", "350%", "360%", "400%"],
+            "Adjacent Power": ["70%", "70%", "70%", "70%", "100%", "110%", "120%", "130%", "140%", "160%", "170%", "180%", "190%", "200%", "230%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "SwordsD": {
+        "Name": "Swords",
+        "Description": "Increase damage dealt with swords.",
+        "Type": "Stat Increase",
+        "Downstream": {"Bait": 5, "Petrify": 10, "Hypnos": 1, "Nerve": 2, "Mirage": 3, "Drain": 4},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 4},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Petrify": {
+        "Name": "Petrify",
+        "Description": "Sword stab at the enemy's muscles wihth a chance of stoning.",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Upstream": {"SwordsD": 10},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 5},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Petrify Chance": ["40%", "41%", "42%", "43%", "49%", "50%", "51%", "52%", "53%", "60%", "61%", "62%", "63%", "64%", "72%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Drain": {
+        "Name": "Drain",
+        "Description": "Sword stab that drains the enemy's HP through the blade.",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Note": "Regen own hp with a percentage of the damage dealt",
+        "Upstream": {"SwordsD": 4},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Damage Absorption": ["50%", "52%", "54%", "56%", "68%", "70%", "72%", "74%", "76%", "100%", "102%", "104%", "106%", "108%", "134%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Mirage": {
+        "Name": "Mirage",
+        "Description": "Sword stab at the enemy's skull with a chance of confusing it.",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Upstream": {"SwordsD": 3},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Confusion chance": ["35%", "36%", "41%", "38%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Nerve": {
+        "Name": "Nerve",
+        "Description": "Sword stab at the enemy's nerves with a chance of paralyzing it.",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Upstream": {"SwordsD": 2},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Paralyzation chance": ["40%", "41%", "42%", "43%", "49%", "50%", "51%", "52%", "53%", "60%", "61%", "62%", "63%", "64%", "72%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Hypnos": {
+        "Name": "Hypnos",
+        "Description": "Sword stab with a chance of putting the enemy to sleep.",
+        "Type": "Sword Skill",
+        "Body": "Arm",
+        "Upstream": {"SwordsD": 1},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 5},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Paralyzation chance": ["40%", "41%", "42%", "43%", "49%", "50%", "51%", "52%", "53%", "60%", "61%", "62%", "63%", "64%", "72%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+
 
     "Mine": {
         "Name": "Mine",
         "Description": "Mine for materials at item points.",
+        "Note": "There is a chance to get nothing from a gathering point. Leveling the skill reduces the chance to get nothing. For example if an gathering spot has 80% to get an item, then at level 2, it will have 80 * 1.02 = 81.6% chance to get an item.",
+        "Type": "Search Skill",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 5},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Item Chance": ["100%", "102%", "104%", "106%", "110%", "111%", "112%", "113%", "114%", "120%"],
+            "Daily Limit": ["2", "4", "6", "8", "10", "12", "14", "16", "18", "20"]
+        }
+    },
+    "Take": {
+        "Name": "Take",
+        "Description": "Gather plants for materials at item points.",
         "Note": "There is a chance to get nothing from a gathering point. Leveling the skill reduces the chance to get nothing. For example if an gathering spot has 80% to get an item, then at level 2, it will have 80 * 1.02 = 81.6% chance to get an item.",
         "Type": "Search Skill",
         "MaxLevel": 10,

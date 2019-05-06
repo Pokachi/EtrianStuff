@@ -73,5 +73,30 @@
             "StalkerP",
             "Mine"
         ]
+    },
+    "Dark Hunter": {
+        "skills":[
+            "HpUpD",
+            "TpUpD",
+            "AtkUpD",
+            "SwordsD",
+            "Whips",
+            "CloakD",
+            "Cuffs",
+            "Shackles",
+            "Gag",
+            "Viper",
+            "Climax",
+            "Ecstasy",
+            "Drain",
+            "Mirage",
+            "Nerve",
+            "Hypnos",
+            "Petrify",
+            "Bait",
+            "BoostUp",
+            "Fury",
+            "Take"
+        ]
     }
 }
