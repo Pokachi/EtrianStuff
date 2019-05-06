@@ -98,5 +98,30 @@
             "Fury",
             "Take"
         ]
+    },
+    "Medic": {
+        "skills":[
+            "HpUpM",
+            "TpUpM",
+            "AtkUpM",
+            "Healer",
+            "Caduceus",
+            "Scavenge",
+            "TpRegen",
+            "Cure",
+            "CureII",
+            "CureIII",
+            "Salve",
+            "SalveII",
+            "Immunize",
+            "CPR",
+            "Regen",
+            "PatchUp",
+            "Unbind",
+            "HTouch",
+            "Refresh",
+            "Revive",
+            "Chop"
+        ]
     }
 }
