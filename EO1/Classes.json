@@ -123,5 +123,30 @@
             "Revive",
             "Chop"
         ]
+    },
+    "Alchemist": {
+        "skills":[
+            "TpUpA",
+            "TpRegenA",
+            "ScavengeA",
+            "Sight",
+            "Warp",
+            "Toxins",
+            "Poison",
+            "Venom",
+            "FireUp",
+            "Fire",
+            "Flame",
+            "Inferno",
+            "IceUp",
+            "Ice",
+            "Freeze",
+            "Cocytus",
+            "Volt Up",
+            "Volt",
+            "Thunder",
+            "Thor",
+            "Chop"
+        ]
     }
 }

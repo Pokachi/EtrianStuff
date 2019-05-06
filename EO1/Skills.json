@@ -107,9 +107,21 @@
         "Name": "TP Up",
         "Description": "Increase maximum TP.",
         "Type": "Stat Increase",
-        "Downstream": {"Scavenge": 3, "TP Regen": 10},
+        "Downstream": {"Scavenge": 3, "TpRegen": 10},
         "MaxLevel": 10,
         "Location": { "x":0, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "TpUpA": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "Downstream": {"ScavengeA": 3, "TpRegenA": 10, "Warp": 7, "Sight": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 1},
         "BoostAllowed": false,
         "LevelData": {
             "TP Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -972,7 +984,7 @@
         "Description": "Whip attack with a chance of binding the enemy's head.",
         "Type": "Whip Skill",
         "Body": "Arm",
-        "Note": "JP wiki have binding chance at 38 at level 3 and 41 at level 4, but the data I was given is the opposite. So... I don't know which is correct.",
+        "Note": "Level 3 indeed have higher bind chance than Level 4!",
         "Upstream": {"Whips": 2},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 0},
@@ -980,7 +992,7 @@
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
             "Power": ["130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "180%", "185%", "190%", "195%", "200%", "210%"],
-            "Aliement chance": ["35%", "36%", "38%", "41%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
+            "Aliement chance": ["35%", "36%", "41%", "38%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
             "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
             "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
         }
@@ -990,7 +1002,7 @@
         "Description": "Whip attack with a chance of binding the enemy's legs.",
         "Type": "Whip Skill",
         "Body": "Arm",
-        "Note": "JP wiki have binding chance at 38 at level 3 and 41 at level 4, but the data I was given is the opposite. So... I don't know which is correct.",
+        "Note": "Level 3 indeed have higher bind chance than Level 4!",
         "Upstream": {"Whips": 3},
         "MaxLevel": 10,
         "Location": { "x":2, "y": 0},
@@ -998,7 +1010,7 @@
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
             "Power": ["130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "180%", "185%", "190%", "195%", "200%", "210%"],
-            "Aliement chance": ["35%", "36%", "38%", "41%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
+            "Aliement chance": ["35%", "36%", "41%", "38%", "44%", "45%", "46%", "47%", "48%", "55%", "56%", "57%", "58%", "59%", "67%"],
             "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
             "Speed Modifier": ["80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "100%", "100%", "100%", "100%", "100%"]
         }
@@ -1203,6 +1215,18 @@
             "Chance": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
         }
     },
+    "ScavengeA": {
+        "Name": "Scavenge",
+        "Description": "Increase chances of the enemy dropping an item.",
+        "Type": "Search Skill",
+        "Upstream": {"TpUpA": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Chance": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
     "TpRegen": {
         "Name": "TP Regen",
         "Description": "Restores a small amount of TP after every turn in battle.",
@@ -1210,6 +1234,18 @@
         "Upstream": {"TpUpM": 10},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Restored": ["1", "1", "2", "2", "3", "3", "4", "4", "4", "5"]
+        }
+    },
+    "TpRegenA": {
+        "Name": "TP Regen",
+        "Description": "Restores a small amount of TP after every turn in battle.",
+        "Type": "Passive Skill",
+        "Upstream": {"TpUpA": 10},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 1},
         "BoostAllowed": false,
         "LevelData": {
             "TP Restored": ["1", "1", "2", "2", "3", "3", "4", "4", "4", "5"]
@@ -1445,6 +1481,32 @@
             "Stun Chance": ["15%", "20%", "25%", "30%", "40%", "45%", "50%", "55%", "60%", "75%", "76%", "77%", "78%", "79%", "80%"],
             "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
             "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+
+    "Sight": {
+        "Name": "Sight",
+        "Description": "Conjure sight to see all FOEs on the map.",
+        "Type": "Search Skill",
+        "Note": "Covers almost entire floor. But have to be stationary. Once you move, the effect ends.",
+        "Upstream": {"TpUpA": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 2},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Cost": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+        }
+    },
+    "Warp": {
+        "Name": "Warp",
+        "Description": "Conjure a warp to the last visited Geomagnetic Field.",
+        "Type": "Search Skill",
+        "Upstream": {"TpUpA": 7},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Cost": ["15", "14", "13", "12", "10", "9", "8", "7", "6", "5"]
         }
     },
 
