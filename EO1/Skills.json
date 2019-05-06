@@ -1,5 +1,5 @@
 {
-    "HpUp1": {
+    "HpUpL": {
         "Name": "HP Up",
         "Description": "Increase maximum HP.",
         "Type": "Stat Increase",
@@ -10,7 +10,19 @@
             "Hp Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
         }
     },
-    "HpUp2": {
+    "HpUpP": {
+        "Name": "HP Up",
+        "Description": "Increase maximum HP.",
+        "Type": "Stat Increase",
+        "Downstream": {"CureP": 3, "CureIIP": 5},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Hp Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "HpUpS": {
         "Name": "HP Up",
         "Description": "Increase maximum HP.",
         "Type": "Stat Increase",
@@ -21,7 +33,7 @@
             "Hp Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
         }
     },
-    "TpUp1": {
+    "TpUpL": {
         "Name": "TP Up",
         "Description": "Increase maximum TP.",
         "Type": "Stat Increase",
@@ -33,7 +45,31 @@
             "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
         }
     },
-    "AtkUpP": {
+    "TpUpS": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "Downstream": {},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
+        }
+    },
+    "TpUpP": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "Downstream": {"Antifire": 3, "Anticold": 3, "Antivolt": 3},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
+        }
+    },
+    "AtkUpL": {
         "Name": "ATK Up",
         "Description": "Increase physical damage.",
         "Type": "Stat Increase",
@@ -45,16 +81,28 @@
             "STR Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
         }
     },
-    "DefUp": {
+    "DefUpL": {
         "Name": "DEF Up",
         "Description": "Increase physical defense.",
         "Type": "Stat Increase",
-        "Downstream": {"ArmHeal": 1, "Flee": 5},
+        "Downstream": {"ArmHeal": 1, "FleeL": 5},
         "MaxLevel": 10,
         "Location": { "x":0, "y": 4},
         "BoostAllowed": false,
         "LevelData": {
-            "Phys Damage Recieved": ["95%", "94%", "93%", "92%", "91%", "90%", "89%", "88%", "87%", "85%"]
+            "Phys Damage Recieved Modifier": ["95%", "94%", "93%", "92%", "91%", "90%", "89%", "88%", "87%", "85%"]
+        }
+    },
+    "DefUpP": {
+        "Name": "DEF Up",
+        "Description": "Increase physical defense.",
+        "Type": "Stat Increase",
+        "Downstream": {"EnGarde": 7, "Fortify": 3, "Parry": 3, "Flee": 3, "Provoke": 1, "StalkerP": 5, "Aegis": 5},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 1},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Phys Damage Recieved Modifier": ["95%", "94%", "93%", "92%", "91%", "90%", "89%", "88%", "87%", "85%"]
         }
     },
     "Axes": {
@@ -99,7 +147,7 @@
         "Description": "Increase attack Power at the expense of defense.",
         "Type": "Enhancement Skill",
         "Body": "Head",
-        "Upstream": {"AtkUpP": 3},
+        "Upstream": {"AtkUpL": 3},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 2},
         "BoostAllowed": true,
@@ -115,7 +163,7 @@
         "Description": "Abandon defense and stamina for greatly strengthened attacks.",
         "Type": "Enhancement Skill",
         "Body": "Head",
-        "Upstream": {"AtkUpP": 10},
+        "Upstream": {"AtkUpL": 10},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 3},
         "BoostAllowed": true,
@@ -132,7 +180,7 @@
         "Description": "Regain the use of bound arms.",
         "Type": "Healing Skill",
         "Body": "Head",
-        "Upstream": {"DefUp": 1},
+        "Upstream": {"DefUpL": 1},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 4},
         "BoostAllowed": true,
@@ -141,14 +189,13 @@
             "Speed Modifier": ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%"]
         }
     },
-    "Flee": {
+    "FleeL": {
         "Name": "Flee",
         "Description": "Sacrifice HP to escape from battle to the previous floor.",
         "Note": "This skill cannot be used in unescapable battles.",
         "Type": "Escape Skill",
-        "FastestAction": true,
         "Body": "Leg",
-        "Upstream": {"DefUp": 5},
+        "Upstream": {"DefUpL": 5},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 5},
         "BoostAllowed": true,
@@ -214,11 +261,10 @@
     "Blazer": {
         "Name": "Blazer",
         "Description": "Sword skill that follows fire magic with a flaming slash.",
-        "Note": "This is a chaser skill, meaning if the target is attacked with fire magic, character will follow up with a fire slash",
+        "Note": "This is a chaser skill, meaning if the target is attacked with fire magic, character will follow up with a fire slash. This skill only deal elemental damage, though the initial strike is physical,",
         "Type": "Sword Skill",
-        "FastestAction": true,
         "Body": "Leg",
-        "Upstream": {"Swords": 7, "TpUp1": 3},
+        "Upstream": {"Swords": 7, "TpUpL": 3},
         "MaxLevel": 10,
         "Location": { "x":2, "y": 0},
         "BoostAllowed": true,
@@ -231,11 +277,10 @@
     "Freezer": {
         "Name": "Freezer",
         "Description": "Sword skill that follows ice magic with a freezing slash.",
-        "Note": "This is a chaser skill, meaning if the target is attacked with ice magic, character will follow up with a ice slash",
+        "Note": "This is a chaser skill, meaning if the target is attacked with ice magic, character will follow up with a ice slash. This skill only deal elemental damage, though the initial strike is physical,",
         "Type": "Sword Skill",
-        "FastestAction": true,
         "Body": "Leg",
-        "Upstream": {"Swords": 7, "TpUp1": 3},
+        "Upstream": {"Swords": 7, "TpUpL": 3},
         "MaxLevel": 10,
         "Location": { "x":2, "y": 1},
         "BoostAllowed": true,
@@ -248,11 +293,10 @@
     "Shocker": {
         "Name": "Shocker",
         "Description": "Sword skill that follows volt magic with a shocking slash.",
-        "Note": "This is a chaser skill, meaning if the target is attacked with volt magic, character will follow up with a volt slash",
+        "Note": "This is a chaser skill, meaning if the target is attacked with volt magic, character will follow up with a volt slash. This skill only deal elemental damage, though the initial strike is physical,",
         "Type": "Sword Skill",
-        "FastestAction": true,
         "Body": "Leg",
-        "Upstream": {"Swords": 7, "TpUp1": 3},
+        "Upstream": {"Swords": 7, "TpUpL": 3},
         "MaxLevel": 10,
         "Location": { "x":2, "y": 2},
         "BoostAllowed": true,
@@ -330,7 +374,7 @@
         "Type": "Stat Increase",
         "Downstream": {"Apollon": 10, "Trueshot": 1, "Disable": 3, "Multihit": 5},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 1},
+        "Location": { "x":4, "y": 2},
         "BoostAllowed": false,
         "LevelData": {
             "Weapon ATK": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
@@ -341,7 +385,7 @@
         "Description": "Increase the chance of getting a preemptive attack.",
         "Type": "Passive Skill",
         "Upstream": {"AgiUp": 3},
-        "Downstream": {"OwlEye": 1, "Aware": 2, "Stalker": 3},
+        "Downstream": {"OwlEye": 1, "Aware": 2, "StalkerS": 3},
         "MaxLevel": 10,
         "Location": { "x":2, "y": 1},
         "BoostAllowed": false,
@@ -458,7 +502,7 @@
         "Body": "Arm",
         "Upstream": {"Bows": 1},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 0},
+        "Location": { "x":4, "y": 1},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
@@ -474,7 +518,7 @@
         "Body": "Arm",
         "Upstream": {"Bows": 5},
         "MaxLevel": 10,
-        "Location": { "x":3, "y": 1},
+        "Location": { "x":3, "y": 2},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["8", "8", "9", "9", "10", "10", "10", "10", "10", "10"],
@@ -491,7 +535,7 @@
         "Body": "Arm",
         "Upstream": {"Bows": 3},
         "MaxLevel": 10,
-        "Location": { "x":5, "y": 1},
+        "Location": { "x":5, "y": 2},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
@@ -509,7 +553,7 @@
         "Body": "Arm",
         "Upstream": {"Bows": 10},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 2},
+        "Location": { "x":4, "y": 3},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["8", "9", "10", "11", "12", "12", "12", "12", "12", "12"],
@@ -533,7 +577,7 @@
             "Sight Range": ["2", "2", "3", "3", "4", "4", "5", "5", "6", "6"]
         }
     },
-    "Stalker": {
+    "StalkerS": {
         "Name": "Stalker",
         "Description": "Cautious steps reduce the chances of enemy encounters.",
         "Type": "Search Skill",
@@ -545,6 +589,261 @@
             "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
             "Steps": ["30", "35", "40", "45", "60", "65", "70", "75", "80", "100"],
             "Reduction": ["70%", "70%", "70%", "70%", "70%", "65%", "65%", "60%", "60%", "50%"]
+        }
+    },
+    
+    "StalkerP": {
+        "Name": "Stalker",
+        "Description": "Cautious steps reduce the chances of enemy encounters.",
+        "Type": "Search Skill",
+        "Upstream": {"DefUpP": 5},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
+            "Steps": ["30", "35", "40", "45", "60", "65", "70", "75", "80", "100"],
+            "Reduction": ["70%", "70%", "70%", "70%", "70%", "65%", "65%", "60%", "60%", "50%"]
+        }
+    },
+    "CureP": {
+        "Name": "Cure",
+        "Description": "Protector skill that heals a small amount of Hp.",
+        "Type": "Healing Skill",
+        "Body": "Head",
+        "Upstream": {"HpUpP": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Hp Recovery": ["20", "26", "32", "38", "50", "56", "62", "68", "74", "92", "98", "104", "110", "116", "140"],
+            "Speed Modifier": ["70%", "72%", "74%", "76%", "80%", "82%", "84%", "86%", "88%", "92%", "94%", "96%", "98%", "110%", "108%"]
+        }
+    },
+    "CureIIP": {
+        "Name": "Cure II",
+        "Description": "Protector skill that heals a medium amount of Hp.",
+        "Type": "Healing Skill",
+        "Body": "Head",
+        "Upstream": {"HpUpP": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "11", "12", "13", "14", "14", "14", "14", "14", "41"],
+            "Hp Recovery": ["75", "81", "87", "93", "111", "117", "123", "129", "135", "159", "165", "171", "177", "183", "213"],
+            "Speed Modifier": ["20%", "22%", "24%", "26%", "30%", "32%", "34%", "36%", "38%", "42%", "44%", "46%", "48%", "50%", "58%"]
+        }
+    },
+    "Antifire": {
+        "Name": "Antifire",
+        "Description": "Shield skill that briefly raises the party's fire resistance.",
+        "Type": "Shield Skill",
+        "Body": "Arm",
+        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming fire damage will heal you. However, this skill is bugged: level 1 to 5 also prevent abnormal conditions, but starting from level 6, this effect is gone.",
+        "Upstream": {"TpUpP": 3, "Shields": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Fire Damage Reduction": ["50%", "60%", "70%", "80%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"],
+            "Fire Damage Absorption": ["0%", "0%", "0%", "0%", "0%", "2%", "4%", "6%", "8%", "10%", "12%", "14%", "16%", "18%", "20%"]
+        }
+    },
+    "Antivolt": {
+        "Name": "Antivolt",
+        "Description": "Shield skill that briefly raises the party's volt resistance.",
+        "Type": "Shield Skill",
+        "Body": "Arm",
+        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming volt damage will heal you. However, this skill is bugged: level 1 to 5 also prevent abnormal conditions, but starting from level 6, this effect is gone.",
+        "Upstream": {"TpUpP": 3, "Shields": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Volt Damage Reduction": ["50%", "60%", "70%", "80%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"],
+            "Volt Damage Absorption": ["0%", "0%", "0%", "0%", "0%", "2%", "4%", "6%", "8%", "10%", "12%", "14%", "16%", "18%", "20%"]
+        }
+    },
+    "Anticold": {
+        "Name": "Anticold",
+        "Description": "Shield skill that briefly raises the party's ice resistance.",
+        "Type": "Shield Skill",
+        "Body": "Arm",
+        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming ice damage will heal you. However, this skill is bugged: level 1 to 5 also prevent abnormal conditions, but starting from level 6, this effect is gone.",
+        "Upstream": {"TpUpP": 3, "Shields": 5},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Ice Damage Reduction": ["50%", "60%", "70%", "80%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"],
+            "Ice Damage Absorption": ["0%", "0%", "0%", "0%", "0%", "2%", "4%", "6%", "8%", "10%", "12%", "14%", "16%", "18%", "20%"]
+        }
+    },
+    "Shields": {
+        "Name": "Shields",
+        "Description": "Increase elemental defense. Needed to learn Shield skills.",
+        "Type": "Stat Increase",
+        "Downstream": {"Antifire": 5, "Anticold": 5, "Antivolt": 5, "FGuard": 1, "BGuard": 1, "Smite": 10, "Fortify": 3, "EnGarde": 7},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Elem Damage Recieved Modifier": ["95%", "94%", "93%", "92%", "91%", "90%", "89%", "88%", "87%", "85%"]
+        }
+    },
+    "FGuard": {
+        "Name": "F. Guard",
+        "Description": "Shield skill that may take damage in the front line's place.",
+        "Type": "Shield Skill",
+        "Body": "Arm",
+        "Note": "Only last until end of the current turn.",
+        "Upstream": {"Shields": 1},
+        "Downstream": {"Defender": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Damage Recieved Modifier": ["80%", "77%", "74%", "71%", "65%", "64%", "63%", "62%", "61%", "60%", "59%", "58%", "57%", "56%", "55%"]
+        }
+    },
+    "BGuard": {
+        "Name": "B. Guard",
+        "Description": "Shield skill that may take damage in the backline line's place.",
+        "Type": "Shield Skill",
+        "Body": "Arm",
+        "Note": "Only last until end of the current turn.",
+        "Upstream": {"Shields": 1},
+        "Downstream": {"Defender": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Damage Recieved Modifier": ["80%", "77%", "74%", "71%", "65%", "64%", "63%", "62%", "61%", "60%", "59%", "58%", "57%", "56%", "55%"]
+        }
+    },
+    "Defender": {
+        "Name": "Defender",
+        "Description": "Organizes the party into a formation of increased defense.",
+        "Type": "Defense Skill",
+        "Body": "Head",
+        "Upstream": {"FGuard": 3, "BGuard": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 5},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "9", "10", "11", "12", "12", "12", "12", "12", "12"],
+            "Phys Damage Recieved Modifier": ["80%", "77%", "74%", "71%", "68%", "67%", "66%", "65%", "65%", "64%", "63%", "62%", "61%", "60%", "59%"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Fortify": {
+        "Name": "Fortify",
+        "Description": "Digs in for ironclad defense against physical damage.",
+        "Type": "Defense Skill",
+        "Body": "Head",
+        "Upstream": {"DefUpP": 3, "Shields": 3},
+        "Downstream": {"Smite": 5},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Phys Damage Recieved Modifier": ["80%", "77%", "74%", "71%", "68%", "67%", "66%", "65%", "65%", "64%", "63%", "62%", "61%", "60%", "59%"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Smite": {
+        "Name": "Smite",
+        "Description": "Shield skill that deals a powerful bash to the enemy",
+        "Note": "Has a chance to arm bind enemies starting from level 5",
+        "Type": "Shield Skill",
+        "Body": "Arm",
+        "Upstream": {"Fortify": 5, "Shields": 10},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "11", "12", "13", "14", "14", "14", "14", "14", "14"],
+            "Power": ["210%", "245%", "220%", "225%", "235%", "237%", "240%", "243%", "246%", "260%", "262%", "264%", "266%", "268%", "286%"],
+            "Ailment Chance": ["0%", "0%", "0%", "0%", "10%", "11%", "12%", "13%", "14%", "20%", "21%", "22%", "23%", "24%", "30%"]
+        }
+    },
+    "Parry": {
+        "Name": "Parry",
+        "Description": "Await the enemy's attack to parry it and negate the damage.",
+        "Type": "Defense Skill",
+        "Body": "Arm",
+        "Upstream": {"DefUpP": 3},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Chance": ["70%", "75%", "80%", "85%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"],
+            "Additional Parry Chance": ["0%", "0%", "0%", "0%", "0%", "10%", "15%", "20%", "25%", "35%", "40%", "45%", "50%", "55%", "70%"]
+        }
+    },
+    "FleeP": {
+        "Name": "Flee",
+        "Description": "Sacrifice HP to escape from battle to the previous floor.",
+        "Note": "This skill cannot be used in unescapable battles.",
+        "Type": "Escape Skill",
+        "Body": "Leg",
+        "Upstream": {"DefUpP": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "4", "4", "4", "5", "5", "5", "5", "5"],
+            "HP Loss": ["50%", "50%", "50%", "50%", "50%", "45%", "40%", "35%", "30%", "25%", "20%", "15%", "10%", "5%", "0%"],
+            "Chance": ["60%", "64%", "68%", "72%", "80%", "82%", "84%", "86%", "88%", "98%", "100%", "100%", "100%", "100%", "100%"]
+        }
+    },
+    "Provoke": {
+        "Name": "Provoke",
+        "Description": "Increase defense and divert the enemy's attention to you.",
+        "Type": "Special Skill",
+        "Body": "Head",
+        "Upstream": {"DefUpP": 1},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "2", "2", "3", "3", "3", "3", "3", "3"],
+            "Provoke Modifier": ["160%", "170%", "180%", "190%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%", "200%"],
+            "Defense Increase": ["0%", "0%", "0%", "0%", "0%", "10%", "11%", "12%", "13%", "15%", "16%", "17%", "18%", "19%", "22%"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Aegis": {
+        "Name": "Aegis",
+        "Description": "Preparedness for death makes it possible to survive with 1 HP.",
+        "Type": "Passive Skill",
+        "Upstream": {"DefUpP": 5},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Chance": ["20%", "21%", "22%", "23%", "29%", "30%", "31%", "32%", "33%", "40%"]
+        }
+    },
+    "EnGarde": {
+        "Name": "En Garde",
+        "Description": "Chance of automatically blocking enemy attacks.",
+        "Type": "Passive Skill",
+        "Upstream": {"DefUpP": 7, "Shields": 7},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 2},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Chance": ["10%", "11%", "12%", "13%", "16%", "17%", "18%", "19%", "20%", "23%"]
         }
     },
 

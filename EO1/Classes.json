@@ -1,17 +1,17 @@
 {
     "Landsknecht": {
         "skills":[
-            "HpUp1",
-            "TpUp1",
-            "AtkUpP",
-            "DefUp",
+            "HpUpL",
+            "TpUpL",
+            "AtkUpL",
+            "DefUpL",
             "Axes",
             "Swords",
             "2Hit",
             "WarCry",
             "HellCry",
             "ArmHeal",
-            "Flee",
+            "FleeL",
             "Cleaver",
             "Tornado",
             "Allslash",
@@ -26,8 +26,8 @@
     },
     "Survivalist": {
         "skills":[
-            "HpUp2",
-            "TpUp1",
+            "HpUpS",
+            "TpUpS",
             "AgiUp",
             "Bows",
             "Multihit",
@@ -37,7 +37,7 @@
             "Ambush",
             "OwlEye",
             "Aware",
-            "Stalker",
+            "StalkerS",
             "Quicken",
             "Trickery",
             "Escape",
@@ -47,6 +47,31 @@
             "ChopS",
             "Mine",
             "TakeS"
+        ]
+    },
+    "Protector": {
+        "skills":[
+            "HpUpP",
+            "TpUpP",
+            "DefUpP",
+            "Shields",
+            "Aegis",
+            "EnGarde",
+            "Provoke",
+            "FleeP",
+            "Parry",
+            "Fortify",
+            "Defender",
+            "FGuard",
+            "BGuard",
+            "Antifire",
+            "Antivolt",
+            "Anticold",
+            "Smite",
+            "CureP",
+            "CureIIP",
+            "StalkerP",
+            "Mine"
         ]
     }
 }
