@@ -148,5 +148,30 @@
             "Thor",
             "Chop"
         ]
+    },
+    "Troubador": {
+        "skills":[
+            "HpUpT",
+            "TpUpT",
+            "StalkerT",
+            "Return",
+            "Songs",
+            "Bravery",
+            "Blaze",
+            "Frost",
+            "Shock",
+            "Shelter",
+            "Mercury",
+            "Erasure",
+            "Taranis",
+            "Ymir",
+            "Ifrit",
+            "Relaxing",
+            "Healing",
+            "Stamina",
+            "Recovery",
+            "Divinity",
+            "Take"
+        ]
     }
 }

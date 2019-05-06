@@ -55,6 +55,18 @@
             "Hp Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
         }
     },
+    "HpUpT": {
+        "Name": "HP Up",
+        "Description": "Increase maximum HP.",
+        "Type": "Stat Increase",
+        "Downstream": {"Stamina": 3, "Healing": 5},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 5},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Hp Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
+        }
+    },
     "TpUpL": {
         "Name": "TP Up",
         "Description": "Increase maximum TP.",
@@ -98,6 +110,18 @@
         "Downstream": {"Antifire": 3, "Anticold": 3, "Antivolt": 3},
         "MaxLevel": 10,
         "Location": { "x":0, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
+        }
+    },
+    "TpUpT": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "Downstream": {"Relaxing": 5, "StalkerT": 5},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 5},
         "BoostAllowed": false,
         "LevelData": {
             "TP Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
@@ -654,6 +678,21 @@
         "Upstream": {"Ambush": 3},
         "MaxLevel": 10,
         "Location": { "x":3, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
+            "Steps": ["30", "35", "40", "45", "60", "65", "70", "75", "80", "100"],
+            "Reduction": ["70%", "70%", "70%", "70%", "70%", "65%", "65%", "60%", "60%", "50%"]
+        }
+    },
+    "StalkerT": {
+        "Name": "Stalker",
+        "Description": "Cautious steps reduce the chances of enemy encounters.",
+        "Type": "Search Skill",
+        "Upstream": {"TpUpT": 5},
+        "Downstream": {"Return": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 5},
         "BoostAllowed": false,
         "LevelData": {
             "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
@@ -1747,6 +1786,255 @@
         }
     },
 
+    "Songs": {
+        "Name": "Songs",
+        "Description": "Needed to learn songs",
+        "Downstream": {"Relaxing": 7, "Healing": 7, "Stamina": 3, "Ifrit": 7, "Ymir": 7, "Taranis": 7, "Divinity": 10, "Recovery": 3, "Erasure":3, "Mercury": 1, "Shelter": 1, "Bravery":1, "Shock":5, "Frost":5, "Blaze":5},
+        "Type": "Stat Increase",
+        "Note": "Also increases song speed",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Song Speed": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Divinity": {
+        "Name": "Divinity",
+        "Description": "Increase experience for the entire party.",
+        "Type": "Passive",
+        "Upstream": {"Recovery": 3, "Songs": 10},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 2},
+        "BoostAllowed": false,
+        "LevelData": {
+            "EXP Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Return": {
+        "Name": "Return",
+        "Description": "Nostalgic tune that takes you back to the previous floor.",
+        "Type": "Search Skill",
+        "Upstream": {"StalkerT": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 5},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Cost": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+        }
+    },
+    "Relaxing": {
+        "Name": "Relaxing",
+        "Description": "A relaxing song recovers party TP by a small amount each turn.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"TpUpT": 5, "Songs": 7},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "TP Regn (Max TP %)": ["1%", "1%", "2%", "2%", "3%", "3%", "4%", "4%", "4%", "5%", "7%", "7%", "8%", "8%", "10%"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Healing": {
+        "Name": "Healing",
+        "Description": "A healing song recovers party HP by a small amount each turn.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"HpUpT": 5, "Songs": 7},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Hp Regn (Max HP %)": ["2%", "3%", "4%", "5%", "7%", "8%", "9%", "10%", "11%", "13%", "14%", "15%", "16%", "17%", "20%"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Stamina": {
+        "Name": "Stamina",
+        "Description": "Tribal rhythm that increases the party's maximum HP.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"HpUpT": 3, "Songs": 3},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Hp Regn (Max HP %)": ["2%", "3%", "4%", "5%", "7%", "8%", "9%", "10%", "11%", "13%", "14%", "15%", "16%", "17%", "20%"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Bravery": {
+        "Name": "Bravery",
+        "Description": "Pulsing beat that increases the party's strength.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 1},
+        "Downstream": {"Shock": 3, "Frost": 3, "Blaze": 3},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "ATK Increase": ["110%", "115%", "120%", "125%", "130%", "131%", "132%", "133%", "134%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Shelter": {
+        "Name": "Shelter",
+        "Description": "Triumphant anthem that increases the party's defense.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 1},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "DEF Increase": ["110%", "115%", "120%", "125%", "130%", "131%", "132%", "133%", "134%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Mercury": {
+        "Name": "Mercury",
+        "Description": "High-tempo piece that increases the party's speed.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 1},
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "AGI Increase": ["110%", "115%", "120%", "125%", "130%", "131%", "132%", "133%", "134%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Erasure": {
+        "Name": "Erasure",
+        "Description": "A startling song that erases the enemy's status benefits.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Buffs Removed": ["1", "1", "2", "2", "3", "3", "3", "3", "3", "36"],
+            "Speed Modifier": ["80%", "82%", "84%", "86%", "90%", "92%", "94%", "96%", "98%", "102%", "104%", "106%", "108%", "110%", "118%"]
+        }
+    },
+    "Recovery": {
+        "Name": "Recovery",
+        "Description": "Blessed aria that recovers party status ailments more quickly.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 3},
+        "Downstream": {"Divinity": 5},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Ailment Recovery": ["110%", "130%", "150%", "170%", "200%", "220%", "240%", "260%", "280%", "320%", "340%", "360%", "380%", "400%", "450%"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Shock": {
+        "Name": "Shock",
+        "Description": "Song that imbues a party member's weapon with voltage.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 5, "Bravery": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["15", "14", "13", "12", "10", "9", "8", "7", "6", "5"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Frost": {
+        "Name": "Frost",
+        "Description": "Song that imbues a party member's weapon with ice.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 5, "Bravery": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["15", "14", "13", "12", "10", "9", "8", "7", "6", "5"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Blaze": {
+        "Name": "Blaze",
+        "Description": "Song that imbues a party member's weapon with fire.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 5, "Bravery": 3},
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["15", "14", "13", "12", "10", "9", "8", "7", "6", "5"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Ifrit": {
+        "Name": "Ifrit",
+        "Description": "Party's fire resistance raised while the enemy's decreases.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 7},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Fire Damage Received Modifier": ["80%", "75%", "70%", "65%", "50%", "55%", "50%", "45%", "40%", "35%", "30%", "25%", "20%", "15%", "10%"],
+            "Fire Damage Increase": ["110%", "115%", "120%", "125%", "130%", "131%", "132%", "133%", "134%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Ymir": {
+        "Name": "Ymir",
+        "Description": "Party's ice resistance raised while the enemy's decreases.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 7},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Ice Damage Received Modifier": ["80%", "75%", "70%", "65%", "50%", "55%", "50%", "45%", "40%", "35%", "30%", "25%", "20%", "15%", "10%"],
+            "Ice Damage Increase": ["110%", "115%", "120%", "125%", "130%", "131%", "132%", "133%", "134%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
+    "Taranis": {
+        "Name": "Taranis",
+        "Description": "Party's volt resistance raised while the enemy's decreases.",
+        "Type": "Song Skill",
+        "Body": "Head",
+        "Upstream": {"Songs": 7},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
+            "Ice Damage Received Modifier": ["80%", "75%", "70%", "65%", "50%", "55%", "50%", "45%", "40%", "35%", "30%", "25%", "20%", "15%", "10%"],
+            "Ice Damage Increase": ["110%", "115%", "120%", "125%", "130%", "131%", "132%", "133%", "134%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
+        }
+    },
 
     "Mine": {
         "Name": "Mine",
