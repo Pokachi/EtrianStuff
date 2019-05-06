@@ -1793,7 +1793,7 @@
         "Type": "Stat Increase",
         "Note": "Also increases song speed",
         "MaxLevel": 10,
-        "Location": { "x":2, "y": 3},
+        "Location": { "x":2, "y": 2},
         "BoostAllowed": false,
         "LevelData": {
             "Song Speed": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -1876,7 +1876,7 @@
         "Upstream": {"Songs": 1},
         "Downstream": {"Shock": 3, "Frost": 3, "Blaze": 3},
         "MaxLevel": 10,
-        "Location": { "x":0, "y": 2},
+        "Location": { "x":1, "y": 0},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
@@ -1891,7 +1891,7 @@
         "Body": "Head",
         "Upstream": {"Songs": 1},
         "MaxLevel": 10,
-        "Location": { "x":0, "y": 3},
+        "Location": { "x":3, "y": 0},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
@@ -1906,7 +1906,7 @@
         "Body": "Head",
         "Upstream": {"Songs": 1},
         "MaxLevel": 10,
-        "Location": { "x":0, "y": 4},
+        "Location": { "x":4, "y": 0},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
@@ -1952,7 +1952,7 @@
         "Body": "Head",
         "Upstream": {"Songs": 5, "Bravery": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 2},
+        "Location": { "x":2, "y": 1},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["15", "14", "13", "12", "10", "9", "8", "7", "6", "5"],
@@ -1980,7 +1980,7 @@
         "Body": "Head",
         "Upstream": {"Songs": 5, "Bravery": 3},
         "MaxLevel": 10,
-        "Location": { "x":1, "y": 0},
+        "Location": { "x":0, "y": 1},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["15", "14", "13", "12", "10", "9", "8", "7", "6", "5"],
@@ -1994,7 +1994,7 @@
         "Body": "Head",
         "Upstream": {"Songs": 7},
         "MaxLevel": 10,
-        "Location": { "x":2, "y": 0},
+        "Location": { "x":0, "y": 2},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
@@ -2010,7 +2010,7 @@
         "Body": "Head",
         "Upstream": {"Songs": 7},
         "MaxLevel": 10,
-        "Location": { "x":3, "y": 0},
+        "Location": { "x":0, "y": 3},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
@@ -2026,7 +2026,7 @@
         "Body": "Head",
         "Upstream": {"Songs": 7},
         "MaxLevel": 10,
-        "Location": { "x":4, "y": 0},
+        "Location": { "x":0, "y": 4},
         "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["6", "6", "7", "7", "8", "8", "8", "8", "8", "8"],
