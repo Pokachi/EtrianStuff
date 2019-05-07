@@ -173,5 +173,30 @@
             "Divinity",
             "Take"
         ]
+    },
+    "Ronin": {
+        "skills":[
+            "AtkUpR",
+            "SightR",
+            "CritUp",
+            "TpUpR",
+            "HpUpR",
+            "Ibuki",
+            "Katanas",
+            "Overhead",
+            "Zamba",
+            "Midareba",
+            "Orochi",
+            "Seigan",
+            "Mikiri",
+            "Koteuchi",
+            "Raizuki",
+            "Iai",
+            "Kubiuchi",
+            "Gatotsu",
+            "Hyosetsu",
+            "Kesagiri",
+            "Mine"
+        ]
     }
 }

@@ -180,7 +180,7 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
     //Draw line and level requirement
     $scope.drawLine = function(skill, element) {
         for (upstream in $scope.skills[skill].Upstream) {
-            template = '<svg class="line" width="1000" height="600"><marker id="mid" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="navy" /></marker>'
+            template = '<svg class="line" width="800" height="575"><marker id="mid" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="navy" /></marker>'
              + '<polyline id="' + upstream + '-' + skill + '" marker-mid="url(#mid)"  points="' + (180 * parseInt($scope.skills[upstream].Location.x) + 55)
              + ',' + (70 + 100 * parseInt($scope.skills[upstream].Location.y)) + ' ' + (180 * parseInt($scope.skills[skill].Location.x) + 55) + ',' + (70 + 100 * parseInt($scope.skills[skill].Location.y))
              + '"/> <rect x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 55) + (180 * parseInt($scope.skills[upstream].Location.x) + 55)) / 2 - 10) + '" y="' + (((70 + 100 * parseInt($scope.skills[upstream].Location.y))
