@@ -10,6 +10,18 @@
             "Hp Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
         }
     },
+    "HpUpR": {
+        "Name": "HP Up",
+        "Description": "Increase maximum HP.",
+        "Type": "Stat Increase",
+        "Downstream": {"Ibuki": 3},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 5},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Hp Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
     "HpUpD": {
         "Name": "HP Up",
         "Description": "Increase maximum HP.",
@@ -151,6 +163,17 @@
             "TP Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
         }
     },
+    "TpUpR": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
     "AtkUpL": {
         "Name": "ATK Up",
         "Description": "Increase physical damage.",
@@ -158,6 +181,18 @@
         "Downstream": {"WarCry": 3, "HellCry": 10},
         "MaxLevel": 10,
         "Location": { "x":0, "y": 2},
+        "BoostAllowed": false,
+        "LevelData": {
+            "STR Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "AtkUpR": {
+        "Name": "ATK Up",
+        "Description": "Increase physical damage.",
+        "Type": "Stat Increase",
+        "Downstream": {"SightR": 3, "CritUp": 5},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 5},
         "BoostAllowed": false,
         "LevelData": {
             "STR Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -173,6 +208,18 @@
         "BoostAllowed": false,
         "LevelData": {
             "STR Increase": ["110%", "125%", "130%", "145%", "190%", "205%", "220%", "235%", "250%", "300%"]
+        }
+    },
+    "CritUp": {
+        "Name": "Crit Up",
+        "Description": "Increase chances of critical attacks.",
+        "Type": "Passive Increase",
+        "Upstream": {"AtkUpR": 5},
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 5},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Crit Increase": ["101%", "102%", "103%", "104%", "105%", "106%", "107%", "108%", "109%", "110%"]
         }
     },
     "DefUpL": {
@@ -1536,6 +1583,18 @@
             "TP Cost": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
         }
     },
+    "SightR": {
+        "Name": "Sight",
+        "Description": "Increase attack damage at night or when blinded.",
+        "Type": "Passive Skill",
+        "Upstream": {"AtkUpR": 3},
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 4},
+        "BoostAllowed": false,
+        "LevelData": {
+            "STR Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
     "Warp": {
         "Name": "Warp",
         "Description": "Conjure a warp to the last visited Geomagnetic Field.",
@@ -2035,6 +2094,245 @@
             "Speed Modifier": ["50%", "52%", "54%", "56%", "60%", "62%", "64%", "66%", "68%", "72%", "74%", "76%", "78%", "90%", "98%"]
         }
     },
+    
+    "Katanas": {
+        "Name": "Katanas",
+        "Description": "Increase katana damage. Needed to learn katana skills.",
+        "Downstream": {"Overhead": 3, "Zamba": 5, "Midareba": 7, "Orochi": 10, "Seigan": 3, "Mikiri": 5, "Koteuchi": 7, "Raizuki": 10, "Iai":3, "Kubiuchi": 5, "Gatotsu": 7, "Hyosetsu": 10, "Kesagiri":1},
+        "Type": "Stat Increase",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 2},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Weapon ATK": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Overhead": {
+        "Name": "Overhead",
+        "Description": "Temporary Overhead stance that increases attack and defense.",
+        "Downstream": {"Zamba": 1, "Midareba": 3, "Orochi": 5},
+        "Upstream": {"Katanas": 3},
+        "Type": "Overhead Skill",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 0},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
+            "ATK Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%", "131%", "132%", "133%", "134%", "142%"],
+            "Damage Received Modifier": ["95%", "94%", "93%", "92%", "91%", "90%", "89%", "88%", "87%", "85%", "84%", "83%", "82%", "81%", "78%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Seigan": {
+        "Name": "Seigan",
+        "Description": "Temporary Seigan stance that increases attack and defense.",
+        "Downstream": {"Mikiri": 1, "Koteuchi": 3, "Raizuki": 5},
+        "Upstream": {"Katanas": 3},
+        "Type": "Seigan Skill",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
+            "ATK Increase": ["100%", "101%", "102%", "103%", "109%", "110%", "111%", "112%", "113%", "120%", "121%", "122%", "123%", "124%", "132%"],
+            "Damage Received Modifier": ["85%", "84%", "83%", "82%", "81%", "80%", "79%", "78%", "77%", "75%", "74%", "73%", "72%", "71%", "68%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Iai": {
+        "Name": "Iai",
+        "Description": "Temporary Iai stance that increases speed.",
+        "Downstream": {"Kubiuchi": 1, "Gatotsu": 3, "Hyosetsu": 5},
+        "Upstream": {"Katanas": 3},
+        "Type": "Iai Skill",
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
+            "AGI Modifier": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%", "131%", "132%", "133%", "134%", "142%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Zamba": {
+        "Name": "Zamba",
+        "Description": "Strong katana slice from the Overhead stance.",
+        "Upstream": {"Katanas": 5, "Overhead": 1},
+        "Type": "Overhead Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["140%", "145%", "150%", "155%", "165%", "167%", "170%", "173%", "176%", "190%", "192%", "194%", "196%", "198%", "216%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Mikiri": {
+        "Name": "Mikiri",
+        "Description": "Deflect an enemy attack with a katana from the Seigan stance.",
+        "Upstream": {"Katanas": 5, "Seigan": 1},
+        "Type": "Seigan Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Cost": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+        }
+    },
+    "Kubiuchi": {
+        "Name": "Kubiuchi",
+        "Description": "Chance of an instant katana kill from the Iai stance.",
+        "Upstream": {"Katanas": 5, "Iai": 1},
+        "Type": "Iai Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Power": ["130%", "131%", "132%", "133%", "134%", "135%", "136%", "137%", "138%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Instant Kill Chance": ["40%", "41%", "42%", "43%", "49%", "50%", "51%", "52%", "53%", "60%", "61%", "62%", "63%", "64%", "72%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Midareba": {
+        "Name": "Midareba",
+        "Description": "Repeated katana slashes from the Overhead stance.",
+        "Upstream": {"Katanas": 7, "Overhead": 3},
+        "Type": "Overhead Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "9", "10", "11", "12", "12", "12", "12", "12", "12"],
+            "Power": ["100%", "103%", "106%", "109%", "115%", "116%", "117%", "118%", "119%", "125%", "126%", "127%", "128%", "129%", "135%"],
+            "Hits": ["2", "2", "2", "2", "2", "2", "2", "2", "2", "3", "3", "3", "3", "3", "3"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Koteuchi": {
+        "Name": "Koteuchi",
+        "Description": "Immobilize an enemy's arm with a katana from the Seigan stance.",
+        "Upstream": {"Katanas": 7, "Seigan": 3},
+        "Type": "Seigan Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["130%", "131%", "132%", "133%", "134%", "135%", "136%", "137%", "138%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Ailment chance": ["20%", "21%", "22%", "23%", "29%", "30%", "31%", "32%", "33%", "40%", "41%", "42%", "43%", "44%", "52%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Gatotsu": {
+        "Name": "Gatotsu",
+        "Description": "Extremely powerful, lightning-quick katana stab.",
+        "Upstream": {"Katanas": 7, "Iai": 3},
+        "Type": "Iai Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["170%", "171%", "172%", "173%", "189%", "190%", "191%", "192%", "193%", "210%", "211%", "212%", "213%", "214%", "232%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Orochi": {
+        "Name": "Orochi",
+        "Description": "Execute an fire katana strike from the Overhead stance.",
+        "Upstream": {"Katanas": 10, "Overhead": 5},
+        "Type": "Overhead Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Power": ["130%", "131%", "132%", "133%", "134%", "135%", "136%", "137%", "138%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Fire Damage": ["50%", "55%", "60%", "70%", "75%", "80%", "85%", "90%", "95%", "100%", "105%", "110%", "115%", "120%", "125%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Raizuki": {
+        "Name": "Raizuki",
+        "Description": "Execute an volt katana strike from the Seigan stance.",
+        "Upstream": {"Katanas": 10, "Seigan": 5},
+        "Type": "Seigan Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Power": ["130%", "131%", "132%", "133%", "134%", "135%", "136%", "137%", "138%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Volt Damage": ["50%", "55%", "60%", "70%", "75%", "80%", "85%", "90%", "95%", "100%", "105%", "110%", "115%", "120%", "125%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Hyosetsu": {
+        "Name": "Hyosetsu",
+        "Description": "Execute an ice katana strike from the Iai stance.",
+        "Upstream": {"Katanas": 10, "Iai": 5},
+        "Type": "Iai Skill",
+        "Body": "Arm",
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Power": ["130%", "131%", "132%", "133%", "134%", "135%", "136%", "137%", "138%", "140%", "141%", "142%", "143%", "144%", "150%"],
+            "Ice Damage": ["50%", "55%", "60%", "70%", "75%", "80%", "85%", "90%", "95%", "100%", "105%", "110%", "115%", "120%", "125%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "20%", "40%", "40%", "40%", "40%", "40%"]
+        }
+    },
+    "Kesagiri": {
+        "Name": "Kesagiri",
+        "Description": "Katana skill of stepping forward while slicing.",
+        "Upstream": {"Katanas": 1},
+        "Type": "Katana Skill",
+        "Body": "Leg",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Power": ["130%", "135%", "140%", "145%", "150%", "155%", "160%", "165%", "170%", "180%", "185%", "190%", "195%", "200%", "210%"],
+            "Accuracy Modifier": ["120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%", "120%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Ibuki": {
+        "Name": "Ibuki",
+        "Description": "Heal Hp by taking a deep breath.",
+        "Upstream": {"HpUpR": 3},
+        "Type": "Healing Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Heal Amount": ["20", "26", "32", "38", "50", "56", "62", "68", "74", "92", "98", "104", "110", "116", "140"],
+            "Speed Modifier": ["70%", "72%", "74%", "76%", "80%", "82%", "84%", "86%", "88%", "92%", "94%", "96%", "98%", "100%", "108%"]
+        }
+    },
+
 
     "Mine": {
         "Name": "Mine",
