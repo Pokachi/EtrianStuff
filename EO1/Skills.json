@@ -2586,7 +2586,7 @@
     "Suicide": {
         "Name": "Suicide",
         "Description": "Commands a terrified enemy to take its own life.",
-        "Upstream": {"EvilEye": 5},
+        "Upstream": {"EvilEye": 10},
         "Type": "Curse Skill",
         "Body": "Head",
         "MaxLevel": 10,
