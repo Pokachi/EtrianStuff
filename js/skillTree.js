@@ -61,10 +61,9 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
                     var key = keyName;
                     $scope.retirement.retirements.push(key);
                 }
-            });
 
-            //Load Class Data
-            $http.get($window.folderName + '/Classes.json')
+                //Load Class Data
+                $http.get($window.folderName + '/Classes.json')
                 .then(function(classes){
                     //More class initialization
                     for(var keyName in classes.data) {        
@@ -76,6 +75,7 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
                     //Try to init after everything is loaded
                     init();
                 });
+            });
         });
             
     //Save

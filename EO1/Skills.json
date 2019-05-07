@@ -67,6 +67,17 @@
             "Hp Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
         }
     },
+    "HpUpH": {
+        "Name": "HP Up",
+        "Description": "Increase maximum HP.",
+        "Type": "Stat Increase",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Hp Increase": ["110%", "112%", "114%", "116%", "128%", "130%", "132%", "134%", "136%", "150%"]
+        }
+    },
     "HpUpT": {
         "Name": "HP Up",
         "Description": "Increase maximum HP.",
@@ -169,6 +180,17 @@
         "Type": "Stat Increase",
         "MaxLevel": 10,
         "Location": { "x":0, "y": 0},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "TpUpH": {
+        "Name": "TP Up",
+        "Description": "Increase maximum TP.",
+        "Type": "Stat Increase",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 1},
         "BoostAllowed": false,
         "LevelData": {
             "TP Increase": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
@@ -2113,6 +2135,7 @@
         "Downstream": {"Zamba": 1, "Midareba": 3, "Orochi": 5},
         "Upstream": {"Katanas": 3},
         "Type": "Overhead Skill",
+        "Note": "Even though you can boost this skill, but it doesn't actually provide boosted stats.",
         "MaxLevel": 10,
         "Location": { "x":1, "y": 0},
         "BoostAllowed": true,
@@ -2129,6 +2152,7 @@
         "Downstream": {"Mikiri": 1, "Koteuchi": 3, "Raizuki": 5},
         "Upstream": {"Katanas": 3},
         "Type": "Seigan Skill",
+        "Note": "Even though you can boost this skill, but it doesn't actually provide boosted stats.",
         "MaxLevel": 10,
         "Location": { "x":1, "y": 4},
         "BoostAllowed": true,
@@ -2145,6 +2169,7 @@
         "Downstream": {"Kubiuchi": 1, "Gatotsu": 3, "Hyosetsu": 5},
         "Upstream": {"Katanas": 3},
         "Type": "Iai Skill",
+        "Note": "Even though you can boost this skill, but it doesn't actually provide boosted stats.",
         "MaxLevel": 10,
         "Location": { "x":4, "y": 1},
         "BoostAllowed": true,
@@ -2173,12 +2198,13 @@
     "Mikiri": {
         "Name": "Mikiri",
         "Description": "Deflect an enemy attack with a katana from the Seigan stance.",
+        "Note": "This skill can be boosted, but no point boosting really",
         "Upstream": {"Katanas": 5, "Seigan": 1},
         "Type": "Seigan Skill",
         "Body": "Arm",
         "MaxLevel": 10,
         "Location": { "x":0, "y": 3},
-        "BoostAllowed": false,
+        "BoostAllowed": true,
         "LevelData": {
             "TP Cost": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
         }
@@ -2333,6 +2359,273 @@
         }
     },
 
+    
+    "Curses": {
+        "Name": "Curses",
+        "Description": "Needed to learn curses.",
+        "Type": "Stat Increase",
+        "Note": "Alsoincreases curse effectiveness",
+        "Downstream": {"Fraility": 1, "Leaden": 1, "Sapping": 1, "Blinding": 2, "Relapse": 3, "Cranial": 5, "Abdomen": 5, "Immobile": 5, "Torpor": 6, "Corrupt": 7, "EvilEye": 10},
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 3},
+        "BoostAllowed": false,
+        "LevelData": {
+            "Curse Effectiveness": ["110%", "111%", "112%", "113%", "119%", "120%", "121%", "122%", "123%", "130%"]
+        }
+    },
+    "Sapping": {
+        "Name": "Sapping",
+        "Description": "Curse that decreases all enemies' strength.",
+        "Upstream": {"Curses": 1},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "ATK Decrease": ["80%", "77%", "74%", "71%", "68%", "67%", "66%", "65%", "64%", "60%", "59%", "58%", "57%", "56%", "55%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Fraility": {
+        "Name": "Fraility",
+        "Description": "Curse that decreases all enemies' defense.",
+        "Upstream": {"Curses": 1},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "DEF Decrease": ["80%", "77%", "74%", "71%", "68%", "67%", "66%", "65%", "64%", "60%", "59%", "58%", "57%", "56%", "55%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Leaden": {
+        "Name": "Leaden",
+        "Description": "Curse that decreases all enemies' speed.",
+        "Upstream": {"Curses": 1},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":0, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "AGI Decrease": ["80%", "77%", "74%", "71%", "68%", "67%", "66%", "65%", "64%", "60%", "59%", "58%", "57%", "56%", "55%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Cranial": {
+        "Name": "Leaden",
+        "Description": "Curse with a chance of binding an enemy's head.",
+        "Upstream": {"Curses": 5},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Bind Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Abdomen": {
+        "Name": "Abdomen",
+        "Description": "Curse with a chance of binding an enemy's arms.",
+        "Upstream": {"Curses": 5},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 3},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Bind Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Immobile": {
+        "Name": "Immobile",
+        "Description": "Curse with a chance of binding an enemy's legs.",
+        "Upstream": {"Curses": 5},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["3", "3", "4", "4", "5", "5", "5", "5", "5", "5"],
+            "Bind Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Speed Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "120%", "120%", "120%", "120%", "120%"]
+        }
+    },
+    "Blinding": {
+        "Name": "Blinding",
+        "Description": "Curse with a chance of blinding all enemies.",
+        "Upstream": {"Curses": 2},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Blind Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Corrupt": {
+        "Name": "Corrupt",
+        "Description": "Curse with a chance of giving all enemies cursed status.",
+        "Upstream": {"Curses": 7},
+        "Downstream": {"Stagger": 5, "Revenge": 10},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Blind Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Torpor": {
+        "Name": "Torpor",
+        "Description": "Curse with a chance of putting all enemies to sleep.",
+        "Upstream": {"Curses": 6},
+        "Downstream": {"Stagger": 5},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 2},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Blind Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Relapse": {
+        "Name": "Relapse",
+        "Description": "Curse that decreases enemies' recovery from status ailments.",
+        "Upstream": {"Curses": 3},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["4", "4", "5", "5", "6", "6", "6", "6", "6", "6"],
+            "Ailment Recovery": ["90%", "87%", "84%", "81%", "72%", "68%", "65%", "62%", "59%", "50%", "47%", "44%", "41%", "38%", "35%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "EvilEye": {
+        "Name": "Evil Eye",
+        "Description": "Evil gaze that has a chance of terrifying the enemy.",
+        "Upstream": {"Curses": 10},
+        "Downstream": {"Lure": 1, "Paralyze": 3, "Betrayal": 5, "Suicide": 10},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 4},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["8", "9", "10", "11", "12", "12", "12", "12", "12", "12"],
+            "Terrify Chance": ["50%", "51%", "52%", "53%", "59%", "60%", "61%", "62%", "63%", "70%", "71%", "72%", "73%", "74%", "82%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    "Lure": {
+        "Name": "Lure",
+        "Description": "Cureses the party to encounter more enemies.",
+        "Upstream": {"EvilEye": 1},
+        "Type": "Search Skill",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 5},
+        "BoostAllowed": false,
+        "LevelData": {
+            "TP Cost": ["2", "2", "3", "3", "4", "4", "4", "4", "4", "4"],
+            "Steps": ["16", "18", "20", "22", "30", "32", "34", "36", "38", "50"],
+            "Encounter Rate": ["130%", "130%", "130%", "130%", "130%", "135%", "135%", "140%", "145%", "150%"]
+        }
+    },
+    "Paralyze": {
+        "Name": "Paralyze",
+        "Description": "Commands a terrified enemy to remain motionless.",
+        "Note": "This skill can be boosted, but no point boosting really",
+        "Upstream": {"EvilEye": 3},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 5},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+        }
+    },
+    "Betrayal": {
+        "Name": "Betrayal",
+        "Description": "Commands a terrified enemy to attack its own comrades.",
+        "Note": "This skill can be boosted, but no point boosting really",
+        "Upstream": {"EvilEye": 5},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":3, "y": 5},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+        }
+    },
+    "Suicide": {
+        "Name": "Suicide",
+        "Description": "Commands a terrified enemy to take its own life.",
+        "Upstream": {"EvilEye": 5},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":4, "y": 5},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["10", "11", "12", "13", "14", "14", "14", "14", "14", "14"],
+            "Hits": ["1", "1", "2", "2", "3", "3", "3", "3", "3", "4", "4", "4", "4", "4", "5"]
+        }
+    },
+    "Stagger": {
+        "Name": "Stagger",
+        "Description": "Chance of stunning the enemies at the beginning of battle..",
+        "Upstream": {"Torpor": 5, "Corrupt": 5},
+        "Type": "Passive Skill",
+        "MaxLevel": 10,
+        "Location": { "x":2, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "Stun Chance": ["16%", "17%", "18%", "19%", "22%", "23%", "24%", "25%", "26%", "30%"]
+        }
+    },
+    "Revenge": {
+        "Name": "Revenge",
+        "Description": "Curse that deals damage to an enemy when struck.",
+        "Upstream": {"Corrupt": 10},
+        "Type": "Curse Skill",
+        "Body": "Head",
+        "MaxLevel": 10,
+        "Location": { "x":1, "y": 1},
+        "BoostAllowed": true,
+        "LevelData": {
+            "TP Cost": ["6", "7", "8", "9", "10", "10", "10", "10", "10", "10"],
+            "Power": ["100%", "102%", "104%", "106%", "120%", "122%", "124%", "126%", "128%", "150%", "152%", "154%", "156%", "158%", "170%"],
+            "Accuracy Modifier": ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"],
+            "Speed Modifier": ["50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "50%", "70%", "70%", "70%", "70%", "70%"]
+        }
+    },
+    
 
     "Mine": {
         "Name": "Mine",

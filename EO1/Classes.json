@@ -198,5 +198,30 @@
             "Kesagiri",
             "Mine"
         ]
+    },
+    "Hexer": {
+        "skills":[
+            "HpUpH",
+            "TpUpH",
+            "Curses",
+            "Fraility",
+            "Sapping",
+            "Leaden",
+            "Blinding",
+            "Relapse",
+            "Cranial",
+            "Abdomen",
+            "Immobile",
+            "Torpor",
+            "Corrupt",
+            "EvilEye",
+            "Stagger",
+            "Revenge",
+            "Lure",
+            "Paralyze",
+            "Betrayal",
+            "Suicide",
+            "Mine"
+        ]
     }
 }
