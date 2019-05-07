@@ -14,9 +14,12 @@ body {
     background-image: url(../EO1/Etrian_Odyssey_logo.png);
 }
 
+img {
+    padding: 10px;
+}
+
 .header {
     margin: 0;
-    padding: 10px;
     width: 100%;
     font-size: 22px;
 }

@@ -14,68 +14,68 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
         return original.apply($location, [path]);
     };
 
-    //Load Meta Data
-    $http.get($window.folderName + '/Meta.json')
-    .then(function(meta){
-        //initialize skill points
-        $scope.skillPoints = {
-            "initialSP": parseInt(meta.data.initialSP),
-            "totalSkillPoints": parseInt(meta.data.initialSP) + 1,
-            "usedSkillPoints": 0
-        }
-
-        //This object will contain a list of all the skills on screen and their allocation
-        $scope.skillAllocation = {};
-
-        //initialize classes
-        $scope.class = {
-            "selected": meta.data.initialClass,
-            "classes": [],
-            "classData": {}
-        };
-
-        //initialize level selector
-        $scope.level = {
-            "selected": 1,
-            "levels": []
-        }
-        for(var i = 1; i <= meta.data.maxLevel; i++) {
-            $scope.level.levels.push(i);
-        };
-
-        //initialize retirement selector
-        $scope.retirement = {
-            "selected": meta.data.initialRetirementData,
-            "retirements": [],
-            "retirementData": meta.data.retirementData
-        }
-        for(var keyName in meta.data.retirementData) {
-            var key = keyName;
-            $scope.retirement.retirements.push(key);
-        }
-    });
-
+    
     //Load Skill Data
     $http.get($window.folderName + '/Skills.json')
         .then(function(skills){
 
             //Skill Initialization
             $scope.skills = skills.data;
-            
-        });
+           
+            //Load Meta Data
+            $http.get($window.folderName + '/Meta.json')
+            .then(function(meta){
+                //initialize skill points
+                $scope.skillPoints = {
+                    "initialSP": parseInt(meta.data.initialSP),
+                    "totalSkillPoints": parseInt(meta.data.initialSP) + 1,
+                    "usedSkillPoints": 0
+                }
 
-    //Load Class Data
-    $http.get($window.folderName + '/Classes.json')
-        .then(function(classes){
-            //More class initialization
-            for(var keyName in classes.data) {        
-                var key = keyName;
-                $scope.class.classes.push(key);
-            };
-            $scope.class.classData = classes.data;
+                //This object will contain a list of all the skills on screen and their allocation
+                $scope.skillAllocation = {};
 
-            //Try to init after everything is loaded
-            init();
+                //initialize classes
+                $scope.class = {
+                    "selected": meta.data.initialClass,
+                    "classes": [],
+                    "classData": {}
+                };
+
+                //initialize level selector
+                $scope.level = {
+                    "selected": 1,
+                    "levels": []
+                }
+                for(var i = 1; i <= meta.data.maxLevel; i++) {
+                    $scope.level.levels.push(i);
+                };
+
+                //initialize retirement selector
+                $scope.retirement = {
+                    "selected": meta.data.initialRetirementData,
+                    "retirements": [],
+                    "retirementData": meta.data.retirementData
+                }
+                for(var keyName in meta.data.retirementData) {
+                    var key = keyName;
+                    $scope.retirement.retirements.push(key);
+                }
+            });
+
+            //Load Class Data
+            $http.get($window.folderName + '/Classes.json')
+                .then(function(classes){
+                    //More class initialization
+                    for(var keyName in classes.data) {        
+                        var key = keyName;
+                        $scope.class.classes.push(key);
+                    };
+                    $scope.class.classData = classes.data;
+
+                    //Try to init after everything is loaded
+                    init();
+                });
         });
             
     //Save
