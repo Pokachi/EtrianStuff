@@ -819,7 +819,7 @@
         "Description": "Shield skill that briefly raises the party's fire resistance.",
         "Type": "Shield Skill",
         "Body": "Arm",
-        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming fire damage will heal you. However, this skill is bugged: level 1 to 5 also prevent abnormal conditions, but starting from level 6, this effect is gone.",
+        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming fire damage will heal you. Also, this skill is bugged: at level 5, it also prevent abnormal conditions, but starting from level 6, this effect is gone.",
         "Upstream": {"TpUpP": 3, "Shields": 5},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 2},
@@ -835,7 +835,7 @@
         "Description": "Shield skill that briefly raises the party's volt resistance.",
         "Type": "Shield Skill",
         "Body": "Arm",
-        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming volt damage will heal you. However, this skill is bugged: level 1 to 5 also prevent abnormal conditions, but starting from level 6, this effect is gone.",
+        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming fire damage will heal you. Also, this skill is bugged: at level 5, it also prevent abnormal conditions, but starting from level 6, this effect is gone.",
         "Upstream": {"TpUpP": 3, "Shields": 5},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 3},
@@ -851,7 +851,7 @@
         "Description": "Shield skill that briefly raises the party's ice resistance.",
         "Type": "Shield Skill",
         "Body": "Arm",
-        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming ice damage will heal you. However, this skill is bugged: level 1 to 5 also prevent abnormal conditions, but starting from level 6, this effect is gone.",
+        "Note": "Only last until end of the current turn. Starting from Level 6, percentage of the incoming fire damage will heal you. Also, this skill is bugged: at level 5, it also prevent abnormal conditions, but starting from level 6, this effect is gone.",
         "Upstream": {"TpUpP": 3, "Shields": 5},
         "MaxLevel": 10,
         "Location": { "x":1, "y": 4},
@@ -1368,7 +1368,7 @@
         "Location": { "x":2, "y": 3},
         "BoostAllowed": false,
         "LevelData": {
-            "TP Restored": ["1", "1", "2", "2", "3", "3", "4", "4", "4", "5"]
+            "Healing Increase": ["102%", "107%", "112%", "117%", "134%", "138%", "144%", "148%", "154%", "175%"]
         }
     },
     "Cure": {
