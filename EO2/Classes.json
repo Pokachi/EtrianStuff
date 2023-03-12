@@ -1,0 +1,34 @@
+{
+    "Landsknecht": {
+        "skills":[
+            "HpUpL",
+            "TpUpL",
+            "StrUpL",
+            "VitUpL",
+            "TecUpL",
+            "AgiUpL",
+            "LucUpL",
+            "EscUpL",
+            "Axes",
+            "Swords",
+            "Counter",
+            "2Hit",
+            "Cleaver",
+            "Tornado",
+            "Allslash",
+            "Hypercut",
+            "Riskcut",
+            "Deathaxe",
+            "Silencer",
+            "Brawn",
+            "Lifeaxe",
+            "WarCry",
+            "Blazer",
+            "Freezer",
+            "Shocker",
+            "Unbound",
+            "AllOut",
+            "MineL"
+        ]
+    }
+}

@@ -145,6 +145,10 @@ select {
     left: -.3rem;
 }
 
+.display-force {
+    width: 450px;
+}
+
 .display-top {
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);

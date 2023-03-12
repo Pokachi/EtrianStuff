@@ -180,7 +180,7 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
     //Draw line and level requirement
     $scope.drawLine = function(skill, element) {
         for (upstream in $scope.skills[skill].Upstream) {
-            template = '<svg class="line" width="800" height="575"><marker id="mid" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="navy" /></marker>'
+            template = '<svg class="line" width="1000" height="805"><marker id="mid" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="navy" /></marker>'
              + '<polyline id="' + upstream + '-' + skill + '" marker-mid="url(#mid)"  points="' + (180 * parseInt($scope.skills[upstream].Location.x) + 55)
              + ',' + (70 + 100 * parseInt($scope.skills[upstream].Location.y)) + ' ' + (180 * parseInt($scope.skills[skill].Location.x) + 55) + ',' + (70 + 100 * parseInt($scope.skills[skill].Location.y))
              + '"/> <rect x="' + (((180 * parseInt($scope.skills[skill].Location.x) + 55) + (180 * parseInt($scope.skills[upstream].Location.x) + 55)) / 2 - 10) + '" y="' + (((70 + 100 * parseInt($scope.skills[upstream].Location.y))
@@ -272,11 +272,11 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
                     skill = $scope.skills[$attrs.skill];
                     skillBlock = $compile('<skill id="' + $attrs.selectedClass + "-" + $attrs.skill + '" class="skill-icon" style="left:' + (60 + 180 * parseInt($scope.skills[$attrs.skill].Location.x)) + 'px; top:' + (170 + 100 * parseInt($scope.skills[$attrs.skill].Location.y))
                     + 'px; " ng-class="{disabled: shouldDisable(\'' + $attrs.skill + '\')}" skill=\'' + $attrs.skill + '\' selectedClass=\'' + $attrs.selectedClass + '\'>' + skill.Name
-                    + ' <div class="skill-allocation"> {{skillAllocation[\'' + $attrs.skill + '\']}}/' + skill.MaxLevel + '</div></skill>')($scope);
+                    + ' <div class="skill-allocation" ng-if="skills[\'' + $attrs.skill + '\'].MaxLevel>0"> {{skillAllocation[\'' + $attrs.skill + '\']}}/' + skill.MaxLevel + '</div></skill>')($scope);
                     //Create buttons
-                    buttonDiv = angular.element("<div/>");
-                    increaseButton = $compile('<button ng-click="increasePoint(\'' + $attrs.skill + '\', 1)" class="increase button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] >= skills[\'' + $attrs.skill + '\'].MaxLevel}"> + </button>')($scope);
-                    minusButton = $compile('<button ng-click="decreasePoint(\'' + $attrs.skill + '\', 1)" class="minus button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] == 0}"> - </button>')($scope);
+                    buttonDiv = angular.element('<div/>');
+                    increaseButton = $compile('<button ng-if="skills[\'' + $attrs.skill + '\'].MaxLevel>0" ng-click="increasePoint(\'' + $attrs.skill + '\', 1)" class="increase button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] >= skills[\'' + $attrs.skill + '\'].MaxLevel}"> + </button>')($scope);
+                    minusButton = $compile('<button ng-if="skills[\'' + $attrs.skill + '\'].MaxLevel>0" ng-click="decreasePoint(\'' + $attrs.skill + '\', 1)" class="minus button" ng-class="{disabledBtn: skillAllocation[\'' + $attrs.skill + '\'] == 0}"> - </button>')($scope);
                     $element.append(skillBlock.append(buttonDiv.append(increaseButton).append(minusButton)));
 
                     //draw lines

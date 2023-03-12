@@ -1,0 +1,16 @@
+{
+    "maxLevel":"99",
+    "SPPerLevel":"1",
+    "initialSP":"2",
+    "retirementData": {
+        "No Retirement": 0,
+        "30-39": 4,
+        "40-49": 5,
+        "50-59": 6,
+        "60-69": 7,
+        "70-98": 8,
+        "99": 10
+    },
+    "initialRetirementData": "No Retirement",
+    "initialClass": "Landsknecht"
+}
