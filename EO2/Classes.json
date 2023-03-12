@@ -30,5 +30,38 @@
             "AllOut",
             "MineL"
         ]
+    },
+    "Survivalist": {
+        "skills":[
+            "HpUpS",
+            "TpUpS",
+            "StrUpS",
+            "VitUpS",
+            "TecUpS",
+            "AgiUpS",
+            "LucUpS",
+            "EscUpS",
+            "Bows",
+            "Ambush",
+            "Sagacity",
+            "1stHit",
+            "Trueshot",
+            "2Bolt",
+            "Sleeper",
+            "Number",
+            "Poisoner",
+            "Apollon",
+            "Velocity",
+            "Slowstep",
+            "1stTurn",
+            "Baitstep",
+            "Patrol",
+            "Foesense",
+            "Stalker",
+            "TakeS",
+            "ChopS",
+            "MineS",
+            "Airwalk"
+        ]
     }
 }
