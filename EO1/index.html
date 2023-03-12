@@ -2,21 +2,21 @@
 <html>
     <head>
         <title>Etrian Odyssey Skill Simulator</title>
-        <script src="./js/lz-string.min.js"></script>
+        <script src="../js/lz-string.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js"></script>
-        <script src="./js/skillTree.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/skillTree.css">
+        <script src="../js/skillTree.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/skillTree.css">
     </head>
     <body>
         <script>
             //Only EO1 for now. May add more as I start playing other games
-            var folderName = "./EO1";
+            var folderName = "./";
         </script>
         <div ng-app="skillTree" ng-controller="skillTreeController">
             <div class="header">
                 <div class="logo">
-                    <img src="EO1/images/Etrian_Odyssey_logo.png" height="100px"></img>
+                    <img src="images/Etrian_Odyssey_logo.png" height="100px"></img>
                 </div>
                 <div class="class-selection">
                     <span>Class: </span><select ng-model="class.selected" ng-options="class for class in class.classes" ng-change="updateClass()"></select>

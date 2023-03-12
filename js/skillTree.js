@@ -311,6 +311,6 @@ SkillTree.controller('skillTreeController', ['$scope', '$http', '$window', '$loc
 }]).directive("skillDescription", ['$compile', function($compile) {
     return {
         restrict: 'E',
-        templateUrl: '.\\template\\skillPopup.html'
+        templateUrl: '..\\template\\skillPopup.html'
     };
 }]);
